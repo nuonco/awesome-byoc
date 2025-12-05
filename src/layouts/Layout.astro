@@ -1,0 +1,92 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "The best BYOC tools — curated by developers. Discover self-hostable and bring-your-own-cloud infrastructure tools." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <title>{title} | BYOC.dev</title>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <slot />
+
+    <script>
+      // Theme toggle functionality
+      function getThemePreference(): string {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme') || 'light';
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+
+      function updateIcons(theme: string): void {
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        if (sunIcon && moonIcon) {
+          if (theme === 'dark') {
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+          } else {
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
+          }
+        }
+      }
+
+      function setTheme(theme: string): void {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        updateIcons(theme);
+      }
+
+      function setupThemeToggle(): void {
+        // Update icons based on current theme
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        updateIcons(currentTheme);
+
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+          // Remove any existing listeners by cloning
+          const newToggle = themeToggle.cloneNode(true);
+          themeToggle.parentNode?.replaceChild(newToggle, themeToggle);
+
+          newToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+          });
+        }
+      }
+
+      // Set initial theme immediately
+      setTheme(getThemePreference());
+
+      // Setup toggle when DOM is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupThemeToggle);
+      } else {
+        setupThemeToggle();
+      }
+
+      // Also handle Astro page transitions if enabled
+      document.addEventListener('astro:page-load', setupThemeToggle);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,183 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="About">
+  <Header />
+
+  <main class="flex-1 bg-[var(--color-slate-50)]">
+    <div class="container py-8 md:py-12">
+      <div class="max-w-3xl mx-auto">
+        <!-- Page Header -->
+        <div class="text-center mb-12">
+          <h1 class="text-3xl md:text-4xl font-bold text-[var(--color-text-primary)] mb-4">
+            About BYOC.dev
+          </h1>
+          <p class="text-lg text-[var(--color-text-secondary)]">
+            A community-curated catalog of Bring Your Own Cloud tools
+          </p>
+        </div>
+
+        <!-- Content -->
+        <div class="bg-[var(--color-surface)] rounded-xl border border-[var(--color-slate-200)] p-8 space-y-8">
+          <!-- What is BYOC -->
+          <section id="what-is-byoc">
+            <h2 class="text-2xl font-bold text-[var(--color-text-primary)] mb-4">What is BYOC?</h2>
+            <p class="text-[var(--color-text-secondary)] mb-4">
+              <strong>Bring Your Own Cloud (BYOC)</strong> is a deployment model where software runs in your own cloud infrastructure rather than in a vendor's shared environment. This approach offers several key benefits:
+            </p>
+            <ul class="space-y-3 text-[var(--color-text-secondary)]">
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 rounded-full bg-[var(--color-accent-100)] text-[var(--color-accent-700)] flex items-center justify-center shrink-0 mt-0.5 text-sm font-medium">1</span>
+                <span><strong>Data Sovereignty</strong> — Your data never leaves your cloud account, making it easier to meet compliance requirements (SOC 2, HIPAA, GDPR, etc.)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 rounded-full bg-[var(--color-accent-100)] text-[var(--color-accent-700)] flex items-center justify-center shrink-0 mt-0.5 text-sm font-medium">2</span>
+                <span><strong>No Vendor Lock-in</strong> — You maintain control over your infrastructure and can switch vendors or self-host if needed</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 rounded-full bg-[var(--color-accent-100)] text-[var(--color-accent-700)] flex items-center justify-center shrink-0 mt-0.5 text-sm font-medium">3</span>
+                <span><strong>Cost Transparency</strong> — Infrastructure costs appear on your cloud bill, making budgeting and optimization straightforward</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 rounded-full bg-[var(--color-accent-100)] text-[var(--color-accent-700)] flex items-center justify-center shrink-0 mt-0.5 text-sm font-medium">4</span>
+                <span><strong>Security Control</strong> — Apply your existing security policies, network controls, and audit processes</span>
+              </li>
+            </ul>
+          </section>
+
+          <hr class="border-[var(--color-slate-200)]" />
+
+          <!-- Why This Catalog -->
+          <section>
+            <h2 class="text-2xl font-bold text-[var(--color-text-primary)] mb-4">Why This Catalog?</h2>
+            <p class="text-[var(--color-text-secondary)] mb-4">
+              The BYOC deployment pattern is becoming increasingly popular, but finding tools that support it can be challenging. Marketing pages don't always make deployment models clear, and comparing options requires visiting dozens of sites.
+            </p>
+            <p class="text-[var(--color-text-secondary)]">
+              We built this catalog to solve that problem. It's a single, community-maintained resource where developers can:
+            </p>
+            <ul class="mt-4 space-y-2 text-[var(--color-text-secondary)]">
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-[var(--color-success)] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Discover tools that can run in their own cloud</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-[var(--color-success)] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Compare licensing (open source vs. commercial)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-[var(--color-success)] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Filter by category, language, and cloud support</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-[var(--color-success)] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Get factual, developer-focused descriptions (no marketing fluff)</span>
+              </li>
+            </ul>
+          </section>
+
+          <hr class="border-[var(--color-slate-200)]" />
+
+          <!-- Contributing -->
+          <section>
+            <h2 class="text-2xl font-bold text-[var(--color-text-primary)] mb-4">Contributing</h2>
+            <p class="text-[var(--color-text-secondary)] mb-4">
+              This catalog is open source and community-driven. We welcome contributions!
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <a
+                href="/submit"
+                class="card p-4 hover:border-[var(--color-accent-300)] flex items-center gap-4"
+              >
+                <div class="w-10 h-10 rounded-lg bg-[var(--color-accent-50)] text-[var(--color-accent-600)] flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-medium text-[var(--color-text-primary)]">Submit a Tool</h3>
+                  <p class="text-sm text-[var(--color-text-muted)]">Add a new BYOC tool to the catalog</p>
+                </div>
+              </a>
+              <a
+                href="https://github.com/byoc-dev/catalog"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="card p-4 hover:border-[var(--color-accent-300)] flex items-center gap-4"
+              >
+                <div class="w-10 h-10 rounded-lg bg-[var(--color-slate-100)] text-[var(--color-text-primary)] flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-medium text-[var(--color-text-primary)]">View on GitHub</h3>
+                  <p class="text-sm text-[var(--color-text-muted)]">Star, fork, or submit a PR</p>
+                </div>
+              </a>
+            </div>
+          </section>
+
+          <hr class="border-[var(--color-slate-200)]" />
+
+          <!-- Curation Criteria -->
+          <section>
+            <h2 class="text-2xl font-bold text-[var(--color-text-primary)] mb-4">Curation Criteria</h2>
+            <p class="text-[var(--color-text-secondary)] mb-4">
+              We include tools that meet the following criteria:
+            </p>
+            <ul class="space-y-2 text-[var(--color-text-secondary)]">
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-[var(--color-accent-500)] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span><strong>BYOC Support</strong> — Tool can be deployed to user's own cloud infrastructure</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-[var(--color-accent-500)] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span><strong>Active Development</strong> — Project is actively maintained</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-[var(--color-accent-500)] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span><strong>Production Ready</strong> — Suitable for production use (not experimental/alpha)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-[var(--color-accent-500)] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span><strong>Clear Documentation</strong> — Has adequate documentation for deployment</span>
+              </li>
+            </ul>
+          </section>
+
+          <hr class="border-[var(--color-slate-200)]" />
+
+          <!-- License -->
+          <section>
+            <h2 class="text-2xl font-bold text-[var(--color-text-primary)] mb-4">License</h2>
+            <p class="text-[var(--color-text-secondary)]">
+              This catalog is open source under the MIT License. The website code and tool data are freely available on GitHub.
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

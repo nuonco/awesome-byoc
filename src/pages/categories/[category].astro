@@ -1,0 +1,79 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ToolCard from '../../components/ToolCard.astro';
+import { categories, getToolsByCategory, type Category } from '../../data/tools';
+
+export function getStaticPaths() {
+  return (Object.keys(categories) as Category[]).map((category) => ({
+    params: { category },
+    props: { category },
+  }));
+}
+
+const { category } = Astro.props;
+const categoryInfo = categories[category as Category];
+const categoryTools = getToolsByCategory(category as Category);
+---
+
+<Layout title={categoryInfo.label} description={categoryInfo.description}>
+  <Header />
+
+  <main class="flex-1 bg-[var(--color-slate-50)]">
+    <div class="container py-8 md:py-12">
+      <!-- Breadcrumb -->
+      <nav class="mb-6 text-sm">
+        <ol class="flex items-center gap-2 text-[var(--color-text-muted)]">
+          <li><a href="/" class="hover:text-[var(--color-accent-600)]">Home</a></li>
+          <li>/</li>
+          <li><a href="/categories" class="hover:text-[var(--color-accent-600)]">Categories</a></li>
+          <li>/</li>
+          <li class="text-[var(--color-text-primary)]">{categoryInfo.label}</li>
+        </ol>
+      </nav>
+
+      <!-- Page Header -->
+      <div class="bg-[var(--color-surface)] rounded-xl border border-[var(--color-slate-200)] p-8 mb-8">
+        <div class="flex items-start gap-6">
+          <div class="w-16 h-16 rounded-xl bg-[var(--color-accent-50)] text-[var(--color-accent-600)] flex items-center justify-center shrink-0">
+            <Fragment set:html={categoryInfo.icon} />
+          </div>
+          <div>
+            <h1 class="text-3xl font-bold text-[var(--color-text-primary)] mb-2">
+              {categoryInfo.label}
+            </h1>
+            <p class="text-lg text-[var(--color-text-secondary)] mb-4">
+              {categoryInfo.description}
+            </p>
+            <p class="text-sm text-[var(--color-text-muted)]">
+              {categoryTools.length} {categoryTools.length === 1 ? 'tool' : 'tools'} in this category
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tools Grid -->
+      {categoryTools.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {categoryTools.map((tool) => (
+            <ToolCard tool={tool} />
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-12">
+          <svg class="w-16 h-16 mx-auto mb-4 text-[var(--color-slate-300)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+          </svg>
+          <h3 class="text-lg font-semibold text-[var(--color-text-primary)] mb-2">No tools yet</h3>
+          <p class="text-[var(--color-text-secondary)] mb-4">Be the first to submit a tool in this category!</p>
+          <a href="/submit" class="btn btn-primary">
+            Submit a Tool
+          </a>
+        </div>
+      )}
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

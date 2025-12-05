@@ -1,0 +1,202 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ToolCard from '../components/ToolCard.astro';
+import CategoryCard from '../components/CategoryCard.astro';
+import { getFeaturedTools, categories, tools } from '../data/tools';
+
+const featuredTools = getFeaturedTools();
+const categoryList = Object.keys(categories) as (keyof typeof categories)[];
+---
+
+<Layout title="The best BYOC tools — curated by developers">
+  <Header />
+
+  <main class="flex-1">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-[var(--color-slate-50)] to-[var(--color-surface)] py-20 md:py-28">
+      <div class="absolute inset-0 bg-grid opacity-50"></div>
+      <div class="container relative">
+        <div class="max-w-3xl mx-auto text-center">
+          <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 text-sm font-medium rounded-full bg-[var(--color-accent-100)] text-[var(--color-accent-700)]">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            Community-curated catalog
+          </div>
+
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-text-primary)] mb-6 text-balance">
+            The best <span class="text-gradient">BYOC tools</span> — curated by developers
+          </h1>
+
+          <p class="text-lg md:text-xl text-[var(--color-text-secondary)] mb-8 max-w-2xl mx-auto">
+            Discover self-hostable and bring-your-own-cloud infrastructure tools. No vendor lock-in. Your cloud, your rules.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="/tools" class="btn btn-primary">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              Explore Tools
+            </a>
+            <a href="/submit" class="btn btn-secondary">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+              </svg>
+              Submit a Tool
+            </a>
+          </div>
+
+          <div class="mt-12 flex items-center justify-center gap-8 text-sm text-[var(--color-text-muted)]">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[var(--color-success)]"></span>
+              {tools.length} tools indexed
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[var(--color-accent-500)]"></span>
+              {categoryList.length} categories
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[var(--color-secondary-500)]"></span>
+              Open source
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What is BYOC Section -->
+    <section class="py-16 md:py-20 bg-[var(--color-surface)]">
+      <div class="container">
+        <div class="max-w-3xl mx-auto">
+          <div class="terminal mb-8">
+            <div class="flex items-center gap-2 mb-4 pb-3 border-b border-[var(--color-slate-700)]">
+              <span class="w-3 h-3 rounded-full bg-red-500"></span>
+              <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+              <span class="w-3 h-3 rounded-full bg-green-500"></span>
+              <span class="ml-4 text-[var(--color-slate-400)]">what-is-byoc.md</span>
+            </div>
+            <div class="space-y-2">
+              <p class="text-[var(--color-accent-400)]"># What is BYOC?</p>
+              <p class="text-[var(--color-slate-300)]">
+                <span class="text-[var(--color-slate-500)]">></span> BYOC (Bring Your Own Cloud) is a deployment model where
+              </p>
+              <p class="text-[var(--color-slate-300)]">
+                <span class="text-[var(--color-slate-500)]">></span> software runs in <span class="text-green-400">your</span> cloud account instead of a vendor's.
+              </p>
+              <p class="text-[var(--color-slate-300)] mt-4">
+                <span class="text-[var(--color-slate-500)]">></span> Benefits:
+              </p>
+              <p class="text-[var(--color-slate-300)]">
+                <span class="text-green-400">✓</span> Data stays in your environment
+              </p>
+              <p class="text-[var(--color-slate-300)]">
+                <span class="text-green-400">✓</span> Compliance requirements met
+              </p>
+              <p class="text-[var(--color-slate-300)]">
+                <span class="text-green-400">✓</span> No vendor lock-in
+              </p>
+              <p class="text-[var(--color-slate-300)]">
+                <span class="text-green-400">✓</span> Cost transparency
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Tools Section -->
+    <section class="py-16 md:py-20 bg-[var(--color-slate-50)]">
+      <div class="container">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-[var(--color-text-primary)] mb-2">
+              Featured Tools
+            </h2>
+            <p class="text-[var(--color-text-secondary)]">
+              Hand-picked BYOC tools trusted by the community
+            </p>
+          </div>
+          <a href="/tools" class="hidden sm:inline-flex btn btn-secondary">
+            View all
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {featuredTools.slice(0, 6).map((tool) => (
+            <ToolCard tool={tool} />
+          ))}
+        </div>
+
+        <div class="mt-8 text-center sm:hidden">
+          <a href="/tools" class="btn btn-secondary">
+            View all tools
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-16 md:py-20 bg-[var(--color-surface)]">
+      <div class="container">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold text-[var(--color-text-primary)] mb-2">
+            Browse by Category
+          </h2>
+          <p class="text-[var(--color-text-secondary)]">
+            Find the right tool for your infrastructure needs
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {categoryList.map((category) => (
+            <CategoryCard category={category} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 md:py-20 bg-[var(--color-slate-900)]">
+      <div class="container">
+        <div class="max-w-2xl mx-auto text-center">
+          <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
+            Know a great BYOC tool?
+          </h2>
+          <p class="text-[var(--color-slate-300)] mb-8">
+            This catalog is community-maintained. Submit a tool to help other developers discover it.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="/submit" class="btn btn-primary">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+              </svg>
+              Submit a Tool
+            </a>
+            <a
+              href="https://github.com/byoc-dev/catalog"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-secondary !border-[var(--color-slate-600)] !text-[var(--color-slate-300)] hover:!bg-[var(--color-slate-800)]"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              Star on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

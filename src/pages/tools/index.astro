@@ -1,0 +1,309 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ToolCard from '../../components/ToolCard.astro';
+import { tools, categories, type Category } from '../../data/tools';
+
+const categoryList = Object.entries(categories) as [Category, { label: string; description: string; icon: string }][];
+const languages = [...new Set(tools.filter(t => t.language).map(t => t.language))].sort();
+const cloudOptions = ['aws', 'gcp', 'azure', 'on-prem', 'any'];
+---
+
+<Layout title="Browse Tools">
+  <Header />
+
+  <main class="flex-1 bg-[var(--color-slate-50)]">
+    <div class="container py-8 md:py-12">
+      <!-- Page Header -->
+      <div class="mb-8">
+        <h1 class="text-3xl md:text-4xl font-bold text-[var(--color-text-primary)] mb-2">
+          Browse Tools
+        </h1>
+        <p class="text-[var(--color-text-secondary)]">
+          {tools.length} BYOC tools across {categoryList.length} categories
+        </p>
+      </div>
+
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Filters Sidebar -->
+        <aside class="lg:w-64 shrink-0">
+          <div class="bg-[var(--color-surface)] rounded-xl border border-[var(--color-slate-200)] p-6 sticky top-24">
+            <!-- Search -->
+            <div class="mb-6">
+              <label for="search" class="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
+                Search
+              </label>
+              <div class="relative">
+                <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input
+                  type="text"
+                  id="search"
+                  placeholder="Search tools..."
+                  class="input pl-10"
+                />
+              </div>
+            </div>
+
+            <!-- License Filter -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
+                License
+              </label>
+              <div class="space-y-2">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" value="all" name="license" class="filter-checkbox rounded border-[var(--color-slate-300)]" checked />
+                  <span class="text-sm text-[var(--color-text-secondary)]">All</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" value="open-source" name="license" class="filter-checkbox rounded border-[var(--color-slate-300)]" />
+                  <span class="text-sm text-[var(--color-text-secondary)]">Open Source</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" value="commercial" name="license" class="filter-checkbox rounded border-[var(--color-slate-300)]" />
+                  <span class="text-sm text-[var(--color-text-secondary)]">Commercial</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" value="hybrid" name="license" class="filter-checkbox rounded border-[var(--color-slate-300)]" />
+                  <span class="text-sm text-[var(--color-text-secondary)]">Hybrid</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
+                Category
+              </label>
+              <select id="category-filter" class="input">
+                <option value="">All Categories</option>
+                {categoryList.map(([key, cat]) => (
+                  <option value={key}>{cat.label}</option>
+                ))}
+              </select>
+            </div>
+
+            <!-- Language Filter -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
+                Language
+              </label>
+              <select id="language-filter" class="input">
+                <option value="">All Languages</option>
+                {languages.map((lang) => (
+                  <option value={lang}>{lang}</option>
+                ))}
+              </select>
+            </div>
+
+            <!-- Cloud Support Filter -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
+                Cloud Support
+              </label>
+              <select id="cloud-filter" class="input">
+                <option value="">Any Cloud</option>
+                {cloudOptions.map((cloud) => (
+                  <option value={cloud}>{cloud.toUpperCase()}</option>
+                ))}
+              </select>
+            </div>
+
+            <!-- Reset Filters -->
+            <button id="reset-filters" class="w-full btn btn-secondary text-sm">
+              Reset Filters
+            </button>
+          </div>
+        </aside>
+
+        <!-- Tools Grid -->
+        <div class="flex-1">
+          <!-- Sort Options -->
+          <div class="flex items-center justify-between mb-6">
+            <p id="results-count" class="text-sm text-[var(--color-text-muted)]">
+              Showing {tools.length} tools
+            </p>
+            <select id="sort-select" class="input w-auto">
+              <option value="name">Sort by Name</option>
+              <option value="stars">Sort by Stars</option>
+              <option value="category">Sort by Category</option>
+            </select>
+          </div>
+
+          <!-- Tools List -->
+          <div id="tools-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {tools.map((tool) => (
+              <div
+                class="tool-item"
+                data-name={tool.name.toLowerCase()}
+                data-description={tool.description.toLowerCase()}
+                data-tags={tool.tags.join(' ').toLowerCase()}
+                data-license={tool.license}
+                data-category={tool.category}
+                data-language={tool.language?.toLowerCase() || ''}
+                data-cloud={tool.cloudSupport.join(' ')}
+                data-stars={tool.stars || 0}
+              >
+                <ToolCard tool={tool} compact />
+              </div>
+            ))}
+          </div>
+
+          <!-- No Results -->
+          <div id="no-results" class="hidden text-center py-12">
+            <svg class="w-16 h-16 mx-auto mb-4 text-[var(--color-slate-300)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h3 class="text-lg font-semibold text-[var(--color-text-primary)] mb-2">No tools found</h3>
+            <p class="text-[var(--color-text-secondary)]">Try adjusting your filters or search term</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const searchInput = document.getElementById('search') as HTMLInputElement;
+    const categoryFilter = document.getElementById('category-filter') as HTMLSelectElement;
+    const languageFilter = document.getElementById('language-filter') as HTMLSelectElement;
+    const cloudFilter = document.getElementById('cloud-filter') as HTMLSelectElement;
+    const sortSelect = document.getElementById('sort-select') as HTMLSelectElement;
+    const resetButton = document.getElementById('reset-filters');
+    const toolsGrid = document.getElementById('tools-grid');
+    const noResults = document.getElementById('no-results');
+    const resultsCount = document.getElementById('results-count');
+    const licenseCheckboxes = document.querySelectorAll('input[name="license"]') as NodeListOf<HTMLInputElement>;
+
+    function filterAndSort() {
+      const searchTerm = searchInput?.value.toLowerCase() || '';
+      const category = categoryFilter?.value || '';
+      const language = languageFilter?.value.toLowerCase() || '';
+      const cloud = cloudFilter?.value || '';
+      const sortBy = sortSelect?.value || 'name';
+
+      let selectedLicenses: string[] = [];
+      licenseCheckboxes.forEach((cb) => {
+        if (cb.checked && cb.value !== 'all') {
+          selectedLicenses.push(cb.value);
+        }
+      });
+
+      const allLicenseCheckbox = document.querySelector('input[name="license"][value="all"]') as HTMLInputElement;
+      if (allLicenseCheckbox?.checked || selectedLicenses.length === 0) {
+        selectedLicenses = [];
+      }
+
+      const toolItems = document.querySelectorAll('.tool-item') as NodeListOf<HTMLElement>;
+      const itemsArray = Array.from(toolItems);
+
+      // Filter
+      let visibleCount = 0;
+      itemsArray.forEach((item) => {
+        const name = item.dataset.name || '';
+        const description = item.dataset.description || '';
+        const tags = item.dataset.tags || '';
+        const itemLicense = item.dataset.license || '';
+        const itemCategory = item.dataset.category || '';
+        const itemLanguage = item.dataset.language || '';
+        const itemCloud = item.dataset.cloud || '';
+
+        const matchesSearch = !searchTerm ||
+          name.includes(searchTerm) ||
+          description.includes(searchTerm) ||
+          tags.includes(searchTerm);
+
+        const matchesLicense = selectedLicenses.length === 0 || selectedLicenses.includes(itemLicense);
+        const matchesCategory = !category || itemCategory === category;
+        const matchesLanguage = !language || itemLanguage === language.toLowerCase();
+        const matchesCloud = !cloud || itemCloud.includes(cloud);
+
+        if (matchesSearch && matchesLicense && matchesCategory && matchesLanguage && matchesCloud) {
+          item.style.display = '';
+          visibleCount++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      // Sort visible items
+      const visibleItems = itemsArray.filter((item) => item.style.display !== 'none');
+      visibleItems.sort((a, b) => {
+        if (sortBy === 'stars') {
+          return (parseInt(b.dataset.stars || '0') - parseInt(a.dataset.stars || '0'));
+        } else if (sortBy === 'category') {
+          return (a.dataset.category || '').localeCompare(b.dataset.category || '');
+        }
+        return (a.dataset.name || '').localeCompare(b.dataset.name || '');
+      });
+
+      // Reorder in DOM
+      visibleItems.forEach((item) => {
+        toolsGrid?.appendChild(item);
+      });
+
+      // Update results count and no results message
+      if (resultsCount) {
+        resultsCount.textContent = `Showing ${visibleCount} tools`;
+      }
+      if (noResults) {
+        noResults.classList.toggle('hidden', visibleCount > 0);
+      }
+    }
+
+    // Handle "All" checkbox
+    const allCheckbox = document.querySelector('input[name="license"][value="all"]') as HTMLInputElement;
+    allCheckbox?.addEventListener('change', () => {
+      if (allCheckbox.checked) {
+        licenseCheckboxes.forEach((cb) => {
+          if (cb.value !== 'all') cb.checked = false;
+        });
+      }
+      filterAndSort();
+    });
+
+    licenseCheckboxes.forEach((cb) => {
+      if (cb.value !== 'all') {
+        cb.addEventListener('change', () => {
+          if (cb.checked && allCheckbox) {
+            allCheckbox.checked = false;
+          }
+          filterAndSort();
+        });
+      }
+    });
+
+    // Event listeners
+    searchInput?.addEventListener('input', filterAndSort);
+    categoryFilter?.addEventListener('change', filterAndSort);
+    languageFilter?.addEventListener('change', filterAndSort);
+    cloudFilter?.addEventListener('change', filterAndSort);
+    sortSelect?.addEventListener('change', filterAndSort);
+
+    resetButton?.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
+      if (categoryFilter) categoryFilter.value = '';
+      if (languageFilter) languageFilter.value = '';
+      if (cloudFilter) cloudFilter.value = '';
+      if (sortSelect) sortSelect.value = 'name';
+      licenseCheckboxes.forEach((cb) => {
+        cb.checked = cb.value === 'all';
+      });
+      filterAndSort();
+    });
+
+    // Initial sort
+    filterAndSort();
+  });
+</script>
+
+<style>
+  .filter-checkbox {
+    accent-color: var(--color-accent-500);
+  }
+</style>
