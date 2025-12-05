@@ -1,0 +1,353 @@
+---
+const navLinks = [
+  { href: '/about', label: 'What is BYOC?' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header id="site-header" class="header-wrapper">
+  <div class="header-inner">
+    <nav class="navbar">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3">
+        <div class="navbar-logo">
+          <img src="/favicon.png" alt="BYOC" />
+        </div>
+        <span class="navbar-logo-text">awesomebyoc.com</span>
+      </a>
+
+      <!-- Center Navigation (absolutely positioned) -->
+      <div class="navbar-center">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              "navbar-link",
+              currentPath === link.href || currentPath.startsWith(link.href + '/')
+                ? "navbar-link-active"
+                : ""
+            ]}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- Right side -->
+      <div class="navbar-actions">
+        <!-- Theme toggle -->
+        <button
+          id="theme-toggle"
+          class="navbar-icon-btn"
+          aria-label="Toggle theme"
+        >
+          <svg id="sun-icon" class="hidden" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg id="moon-icon" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+
+        <!-- GitHub Button -->
+        <a
+          href="https://github.com/nuonco/awesome-byoc"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="navbar-btn-github"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          <span>View on Github</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Spacer that replaces header when it floats -->
+<div id="header-spacer" class="header-spacer"></div>
+
+<style>
+  /* === INITIAL STATE: Static in grid === */
+  .header-wrapper {
+    position: relative;
+    background: transparent;
+    z-index: 1000;
+    padding: 20px 120px;
+    border-bottom: 1px solid var(--color-border);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .header-inner {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .navbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    transform: translateY(0) scale(1);
+    transition: 
+      background 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      border 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      border-radius 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      backdrop-filter 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Spacer - hidden by default */
+  .header-spacer {
+    display: none;
+  }
+
+  .header-spacer.visible {
+    display: block;
+  }
+
+  /* === SCROLLED STATE: Fixed, floating with blur === */
+  .header-wrapper.scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: transparent;
+    border-bottom: none;
+  }
+
+  /* Scrolled state - add rounded corners, background, blur, lift effect */
+  .header-wrapper.scrolled .navbar {
+    border-radius: 12px;
+    transform: translateY(-2px) scale(0.98);
+  }
+
+  /* Light mode scrolled */
+  html[data-theme="light"] .header-wrapper.scrolled .navbar {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.08),
+      inset 0 0 0 1px rgba(0, 0, 0, 0.03);
+  }
+
+  /* Dark mode scrolled */
+  html[data-theme="dark"] .header-wrapper.scrolled .navbar {
+    background: rgba(18, 18, 18, 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .header-wrapper {
+      padding: 20px 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header-wrapper {
+      padding: 16px 20px;
+    }
+  }
+
+  /* Logo */
+  .navbar-logo {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+  }
+
+  .navbar-logo:hover {
+    transform: scale(1.05);
+  }
+
+  .navbar-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .navbar-logo-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    letter-spacing: -0.3px;
+  }
+
+  @media (max-width: 1024px) {
+    .navbar-logo-text {
+      display: none;
+    }
+  }
+
+  /* Center navigation */
+  .navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .navbar-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    letter-spacing: -0.2px;
+    transition: opacity 0.15s ease;
+  }
+
+  .navbar-link:hover {
+    opacity: 0.7;
+  }
+
+  .navbar-link-active {
+    opacity: 1;
+  }
+
+  /* Actions container */
+  .navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Icon button */
+  .navbar-icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .navbar-icon-btn:hover {
+    background: var(--color-bg-tertiary);
+    border-color: var(--color-border-secondary);
+    color: var(--color-text-primary);
+  }
+
+  /* GitHub button */
+  .navbar-btn-github {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 14px;
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    color: var(--color-text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    transition: all 0.15s ease;
+  }
+
+  .navbar-btn-github:hover {
+    background: var(--color-bg-tertiary);
+    border-color: var(--color-border-secondary);
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 640px) {
+    .navbar {
+      padding: 5px 8px;
+    }
+
+    .navbar-logo {
+      width: 34px;
+      height: 34px;
+    }
+
+    .navbar-links {
+      gap: 20px;
+    }
+
+    .navbar-link {
+      font-size: 14px;
+    }
+
+    .navbar-icon-btn {
+      width: 34px;
+      height: 34px;
+    }
+
+    .navbar-btn-github span {
+      display: none;
+    }
+
+    .navbar-btn-github {
+      padding: 8px;
+    }
+  }
+</style>
+
+<script>
+  function setupScrollBehavior() {
+    const header = document.getElementById('site-header');
+    const spacer = document.getElementById('header-spacer');
+    
+    if (!header || !spacer) return;
+
+    let headerHeight = header.offsetHeight;
+
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+        spacer.classList.add('visible');
+        spacer.style.height = headerHeight + 'px';
+      } else {
+        header.classList.remove('scrolled');
+        spacer.classList.remove('visible');
+      }
+    };
+
+    // Recalculate header height on resize
+    window.addEventListener('resize', () => {
+      if (!header.classList.contains('scrolled')) {
+        headerHeight = header.offsetHeight;
+      }
+    });
+
+    // Listen to scroll
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Initial check (only set scrolled if already scrolled)
+    if (window.scrollY > 50) {
+      handleScroll();
+    }
+  }
+
+  // Run on load
+  document.addEventListener('DOMContentLoaded', setupScrollBehavior);
+  document.addEventListener('astro:page-load', setupScrollBehavior);
+</script>

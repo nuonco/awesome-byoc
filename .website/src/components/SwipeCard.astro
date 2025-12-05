@@ -1,0 +1,45 @@
+---
+import type { ExampleCompany } from '../data/exampleCompanies';
+
+interface Props {
+  company: ExampleCompany;
+  index: number;
+}
+
+const { company, index } = Astro.props;
+---
+
+<div
+  class="swipe-card"
+  data-company-id={company.id}
+  data-index={index}
+  style={`z-index: ${100 - index};`}
+>
+  <div
+    class="swipe-card-bg"
+    style={`background: linear-gradient(135deg, ${company.gradientFrom} 0%, ${company.gradientTo} 100%);`}
+  ></div>
+
+  <div class="swipe-card-content">
+    <div class="swipe-card-logo">
+      <img
+        src={company.logo}
+        alt={`${company.name} logo`}
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      />
+      <span class="swipe-card-logo-fallback" style="display: none;">
+        {company.name.substring(0, 2).toUpperCase()}
+      </span>
+    </div>
+
+    <div class="swipe-card-info">
+      <h3 class="swipe-card-name">{company.name}</h3>
+      <span class="swipe-card-category">{company.category}</span>
+      <p class="swipe-card-description">{company.description}</p>
+    </div>
+  </div>
+
+  <!-- Swipe indicators -->
+  <div class="swipe-indicator swipe-indicator-save">Save</div>
+  <div class="swipe-indicator swipe-indicator-skip">Skip</div>
+</div>

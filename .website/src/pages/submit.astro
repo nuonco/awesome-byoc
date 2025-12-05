@@ -1,0 +1,353 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { categories, type Category } from '../data/tools';
+
+const categoryList = Object.entries(categories) as [Category, { label: string; description: string; icon: string }][];
+const cloudOptions = [
+  { value: 'aws', label: 'AWS' },
+  { value: 'gcp', label: 'Google Cloud' },
+  { value: 'azure', label: 'Azure' },
+  { value: 'on-prem', label: 'On-Premises' },
+  { value: 'any', label: 'Any Cloud' },
+];
+---
+
+<Layout title="Submit a Tool">
+  <Header />
+
+  <main class="flex-1 bg-[var(--color-slate-50)]">
+    <div class="container py-8 md:py-12">
+      <div class="max-w-2xl mx-auto">
+        <!-- Page Header -->
+        <div class="text-center mb-8">
+          <h1 class="text-3xl md:text-4xl font-bold text-[var(--color-text-primary)] mb-4">
+            Submit a Tool
+          </h1>
+          <p class="text-lg text-[var(--color-text-secondary)]">
+            Know a great BYOC tool? Help the community discover it.
+          </p>
+        </div>
+
+        <!-- Submission Options -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <a
+            href="https://github.com/byoc-dev/catalog/issues/new?template=tool-submission.yml"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="card p-6 text-center hover:border-[var(--color-accent-300)]"
+          >
+            <div class="w-12 h-12 mx-auto mb-4 rounded-lg bg-[var(--color-slate-100)] flex items-center justify-center">
+              <svg class="w-6 h-6 text-[var(--color-text-primary)]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-[var(--color-text-primary)] mb-2">Submit via GitHub</h3>
+            <p class="text-sm text-[var(--color-text-secondary)]">
+              Open a GitHub issue with our submission template. Recommended for developers.
+            </p>
+          </a>
+
+          <div class="card p-6 text-center border-[var(--color-accent-200)] bg-[var(--color-accent-50)]/30">
+            <div class="w-12 h-12 mx-auto mb-4 rounded-lg bg-[var(--color-accent-100)] flex items-center justify-center">
+              <svg class="w-6 h-6 text-[var(--color-accent-600)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <h3 class="font-semibold text-[var(--color-text-primary)] mb-2">Use the Form Below</h3>
+            <p class="text-sm text-[var(--color-text-secondary)]">
+              Fill out the form and we'll create the submission for you.
+            </p>
+          </div>
+        </div>
+
+        <!-- Submission Form -->
+        <div class="bg-[var(--color-surface)] rounded-xl border border-[var(--color-slate-200)] p-8">
+          <form id="submit-form" class="space-y-6">
+            <!-- Tool Name -->
+            <div>
+              <label for="name" class="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
+                Tool Name <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="e.g., Prometheus"
+                class="input"
+              />
+            </div>
+
+            <!-- Description -->
+            <div>
+              <label for="description" class="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
+                Short Description <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="description"
+                name="description"
+                required
+                placeholder="One sentence describing what this tool does"
+                class="input"
+                maxlength="150"
+              />
+              <p class="mt-1 text-xs text-[var(--color-text-muted)]">Keep it brief and clear, no marketing fluff.</p>
+            </div>
+
+            <!-- Homepage URL -->
+            <div>
+              <label for="homepage" class="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
+                Homepage URL <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="url"
+                id="homepage"
+                name="homepage"
+                required
+                placeholder="https://example.com"
+                class="input"
+              />
+            </div>
+
+            <!-- GitHub URL -->
+            <div>
+              <label for="github" class="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
+                GitHub Repository
+              </label>
+              <input
+                type="url"
+                id="github"
+                name="github"
+                placeholder="https://github.com/org/repo"
+                class="input"
+              />
+            </div>
+
+            <!-- Category -->
+            <div>
+              <label for="category" class="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
+                Category <span class="text-red-500">*</span>
+              </label>
+              <select id="category" name="category" required class="input">
+                <option value="">Select a category</option>
+                {categoryList.map(([key, cat]) => (
+                  <option value={key}>{cat.label}</option>
+                ))}
+              </select>
+            </div>
+
+            <!-- License -->
+            <div>
+              <label for="license" class="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
+                License Type <span class="text-red-500">*</span>
+              </label>
+              <select id="license" name="license" required class="input">
+                <option value="">Select license type</option>
+                <option value="open-source">Open Source</option>
+                <option value="commercial">Commercial</option>
+                <option value="hybrid">Hybrid (Open Core)</option>
+              </select>
+            </div>
+
+            <!-- Language -->
+            <div>
+              <label for="language" class="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
+                Primary Language
+              </label>
+              <input
+                type="text"
+                id="language"
+                name="language"
+                placeholder="e.g., Go, Rust, Python"
+                class="input"
+              />
+            </div>
+
+            <!-- Cloud Support -->
+            <div>
+              <label class="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
+                Cloud Support <span class="text-red-500">*</span>
+              </label>
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {cloudOptions.map((cloud) => (
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      name="cloudSupport"
+                      value={cloud.value}
+                      class="rounded border-[var(--color-slate-300)] text-[var(--color-accent-500)]"
+                    />
+                    <span class="text-sm text-[var(--color-text-secondary)]">{cloud.label}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <!-- Tags -->
+            <div>
+              <label for="tags" class="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
+                Tags
+              </label>
+              <input
+                type="text"
+                id="tags"
+                name="tags"
+                placeholder="kubernetes, monitoring, metrics (comma-separated)"
+                class="input"
+              />
+            </div>
+
+            <!-- Submit Button -->
+            <div class="pt-4">
+              <button type="submit" class="w-full btn btn-primary">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+                Generate Submission
+              </button>
+            </div>
+          </form>
+
+          <!-- Generated Output -->
+          <div id="output-container" class="hidden mt-8 pt-8 border-t border-[var(--color-slate-200)]">
+            <h3 class="text-lg font-semibold text-[var(--color-text-primary)] mb-4">Generated Tool Entry</h3>
+            <p class="text-sm text-[var(--color-text-secondary)] mb-4">
+              Copy this YAML and submit it as a GitHub issue or pull request:
+            </p>
+            <div class="terminal relative">
+              <button
+                id="copy-button"
+                class="absolute top-3 right-3 p-2 rounded-md bg-[var(--color-slate-700)] hover:bg-[var(--color-slate-600)] transition-colors"
+                title="Copy to clipboard"
+              >
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+              </button>
+              <pre id="yaml-output" class="text-sm whitespace-pre-wrap"></pre>
+            </div>
+            <div class="mt-4 flex gap-3">
+              <a
+                id="github-issue-link"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+              >
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                Open GitHub Issue
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guidelines -->
+        <div class="mt-8 bg-[var(--color-surface)] rounded-xl border border-[var(--color-slate-200)] p-6">
+          <h3 class="font-semibold text-[var(--color-text-primary)] mb-4">Submission Guidelines</h3>
+          <ul class="space-y-2 text-sm text-[var(--color-text-secondary)]">
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-[var(--color-success)] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Tool must support BYOC deployment (runs in user's cloud account)</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-[var(--color-success)] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Descriptions should be factual and developer-focused, no marketing speak</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-[var(--color-success)] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Include accurate license information</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-[var(--color-success)] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Link to official project pages only</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const form = document.getElementById('submit-form') as HTMLFormElement;
+    const outputContainer = document.getElementById('output-container');
+    const yamlOutput = document.getElementById('yaml-output');
+    const copyButton = document.getElementById('copy-button');
+    const githubIssueLink = document.getElementById('github-issue-link') as HTMLAnchorElement;
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const name = formData.get('name') as string;
+      const description = formData.get('description') as string;
+      const homepage = formData.get('homepage') as string;
+      const github = formData.get('github') as string;
+      const category = formData.get('category') as string;
+      const license = formData.get('license') as string;
+      const language = formData.get('language') as string;
+      const tags = (formData.get('tags') as string).split(',').map(t => t.trim()).filter(Boolean);
+      const cloudSupport = formData.getAll('cloudSupport') as string[];
+
+      // Generate ID from name
+      const id = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+      // Build YAML
+      let yaml = `# Tool Submission: ${name}\n\n`;
+      yaml += `id: "${id}"\n`;
+      yaml += `name: "${name}"\n`;
+      yaml += `description: "${description}"\n`;
+      yaml += `homepage: "${homepage}"\n`;
+      if (github) yaml += `github: "${github}"\n`;
+      yaml += `category: "${category}"\n`;
+      yaml += `license: "${license}"\n`;
+      if (language) yaml += `language: "${language}"\n`;
+      yaml += `cloudSupport:\n`;
+      cloudSupport.forEach(c => yaml += `  - "${c}"\n`);
+      if (tags.length > 0) {
+        yaml += `tags:\n`;
+        tags.forEach(t => yaml += `  - "${t}"\n`);
+      }
+
+      // Show output
+      if (yamlOutput) yamlOutput.textContent = yaml;
+      outputContainer?.classList.remove('hidden');
+
+      // Update GitHub issue link
+      const issueTitle = encodeURIComponent(`[Tool Submission] ${name}`);
+      const issueBody = encodeURIComponent(`## Tool Submission\n\n\`\`\`yaml\n${yaml}\`\`\`\n\n## Additional Notes\n\n(Add any additional information about the tool here)`);
+      if (githubIssueLink) {
+        githubIssueLink.href = `https://github.com/byoc-dev/catalog/issues/new?title=${issueTitle}&body=${issueBody}`;
+      }
+
+      // Scroll to output
+      outputContainer?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    copyButton?.addEventListener('click', () => {
+      const text = yamlOutput?.textContent || '';
+      navigator.clipboard.writeText(text).then(() => {
+        copyButton.innerHTML = `<svg class="w-4 h-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>`;
+        setTimeout(() => {
+          copyButton.innerHTML = `<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>`;
+        }, 2000);
+      });
+    });
+  });
+</script>

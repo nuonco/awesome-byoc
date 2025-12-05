@@ -1,0 +1,79 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="mt-auto border-t border-[var(--color-border)] bg-[var(--color-bg-primary)]">
+  <div class="container py-16 md:py-20">
+    <div class="flex flex-col md:flex-row justify-between items-start gap-12">
+      <!-- Brand -->
+      <div class="max-w-md">
+        <a href="/" class="inline-flex items-center text-[var(--color-text-primary)] mb-4">
+          <span class="text-[18px] leading-[27px] font-medium tracking-tight" style="font-family: 'JetBrains Mono', monospace;">
+            <span class="text-[var(--color-accent)]">awesomebyoc</span>.com
+          </span>
+        </a>
+        <p class="text-body text-[var(--color-text-secondary)] mb-6 flex items-center gap-2">
+          Maintained by 
+          <a href="https://nuon.co/" target="_blank" rel="noopener noreferrer" class="inline-block">
+            <img src="/nuon-logo-dark.svg" alt="Nuon" class="h-12 inline-block nuon-logo-light" />
+            <img src="/nuon-logo-light.svg" alt="Nuon" class="h-12 hidden nuon-logo-dark" />
+          </a>
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div class="flex gap-16">
+        <div>
+          <h4 class="text-label font-medium uppercase tracking-wider text-[var(--color-text-secondary)] mb-4">Navigate</h4>
+          <ul class="space-y-3">
+            <li>
+              <a href="/" class="text-body text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors">
+                All Tools
+              </a>
+            </li>
+            <li>
+              <a href="/about" class="text-body text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors">
+                What is BYOC?
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-label font-medium uppercase tracking-wider text-[var(--color-text-secondary)] mb-4">Community</h4>
+          <ul class="space-y-3">
+            <li>
+              <a 
+                href="https://github.com/nuonco/awesome-byoc" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="text-body text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+              >
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a 
+                href="https://github.com/nuonco/awesome-byoc/blob/main/CONTRIBUTING.md" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="text-body text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+              >
+                Contributing
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Bottom bar - Full width -->
+  <div class="border-t border-[var(--color-border)]">
+    <div class="container py-6">
+      <p class="text-subtext text-[var(--color-text-secondary)] text-center">
+        &copy; {currentYear} MIT License
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,228 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="About BYOC">
+  <div class="page-frame">
+    <div class="frame-line frame-line-top"></div>
+    <div class="frame-line frame-line-left"></div>
+    <div class="frame-line frame-line-right"></div>
+    
+    <Header />
+
+    <main class="flex-1">
+      <!-- Page Header -->
+      <section>
+        <div class="container py-16 md:py-20">
+          <h1 class="h1 font-mono text-[var(--color-text-primary)] mb-8">
+            What is BYOC?
+          </h1>
+          <h3 class="text-[20px] md:text-[24px] lg:text-[28px] font-normal text-[var(--color-text-secondary)] mb-12 leading-relaxed max-w-3xl" style="letter-spacing: -0.02em;">
+            <strong class="font-medium text-[var(--color-text-primary)]">Bring Your Own Cloud (BYOC)</strong> is a deployment model where software runs in your own cloud infrastructure rather than in a vendor's shared environment.
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="flex items-start gap-4">
+                  <i class="ph-bold ph-shield-check text-[32px] flex-shrink-0" style="color: #4CC9F0;"></i>
+                  <div>
+                    <h3 class="text-[18px] font-semibold text-[var(--color-text-primary)] mb-2">Data Sovereignty</h3>
+                    <p class="text-body text-[var(--color-text-secondary)]">Data never leaves your cloud account</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <i class="ph-bold ph-lock-open text-[32px] flex-shrink-0" style="color: #3A00FF;"></i>
+                  <div>
+                    <h3 class="text-[18px] font-semibold text-[var(--color-text-primary)] mb-2">No Vendor Lock-in</h3>
+                    <p class="text-body text-[var(--color-text-secondary)]">Control your infrastructure completely</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <i class="ph-bold ph-receipt text-[32px] flex-shrink-0" style="color: #F72585;"></i>
+                  <div>
+                    <h3 class="text-[18px] font-semibold text-[var(--color-text-primary)] mb-2">Cost Transparency</h3>
+                    <p class="text-body text-[var(--color-text-secondary)]">See all costs on your cloud bill</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <i class="ph-bold ph-shield-star text-[32px] flex-shrink-0" style="color: #4CC9F0;"></i>
+                  <div>
+                    <h3 class="text-body-strong text-[var(--color-text-primary)] mb-2">Security Control</h3>
+                    <p class="text-body text-[var(--color-text-secondary)]">Apply your own security policies</p>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Horizontal Line -->
+      <div class="w-full h-px bg-[var(--color-border)]"></div>
+
+      <!-- Architecture Patterns -->
+      <section>
+        <div class="container py-16 md:py-20">
+          <h2 class="text-[48px] font-normal leading-normal tracking-[0.8px] text-[var(--color-text-primary)] mb-12" style="font-family: 'JetBrains Mono', monospace;">
+            Architecture Patterns
+          </h2>
+          <div class="flex flex-col gap-6">
+            <div class="border border-[var(--color-border)] rounded-[12px] p-8 bg-[var(--color-bg-primary)] relative overflow-hidden">
+              <div class="absolute top-0 left-0 w-1 h-full" style="background: linear-gradient(180deg, #4CC9F0 0%, #4CC9F0 100%);"></div>
+              <h3 class="text-[20px] font-semibold text-[var(--color-text-primary)] mb-3">
+                Control Plane / Data Plane Separation
+              </h3>
+              <p class="text-body text-[var(--color-text-secondary)] mb-6 leading-relaxed">
+                Vendor operates a control plane while your data plane runs in your cloud.
+              </p>
+              <ul class="space-y-2">
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Data stays local</span>
+                </li>
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Managed experience</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="border border-[var(--color-border)] rounded-[12px] p-8 bg-[var(--color-bg-primary)] relative overflow-hidden">
+              <div class="absolute top-0 left-0 w-1 h-full" style="background: linear-gradient(180deg, #3A00FF 0%, #3A00FF 100%);"></div>
+              <h3 class="text-[20px] font-semibold text-[var(--color-text-primary)] mb-3">
+                Agent-Based Architecture
+              </h3>
+              <p class="text-body text-[var(--color-text-secondary)] mb-6 leading-relaxed">
+                Lightweight agent in your environment communicates outbound to vendor services.
+              </p>
+              <ul class="space-y-2">
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Minimal footprint</span>
+                </li>
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Easy updates</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="border border-[var(--color-border)] rounded-[12px] p-8 bg-[var(--color-bg-primary)] relative overflow-hidden">
+              <div class="absolute top-0 left-0 w-1 h-full" style="background: linear-gradient(180deg, #F72585 0%, #F72585 100%);"></div>
+              <h3 class="text-[20px] font-semibold text-[var(--color-text-primary)] mb-3">
+                Full Self-Hosted / Air-Gapped
+              </h3>
+              <p class="text-body text-[var(--color-text-secondary)] mb-6 leading-relaxed">
+                Entire application runs in your environment with no vendor dependency.
+              </p>
+              <ul class="space-y-2">
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Complete isolation</span>
+                </li>
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Air-gap ready</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Horizontal Line -->
+      <div class="w-full h-px bg-[var(--color-border)]"></div>
+
+      <!-- When to BYOC -->
+      <section>
+        <div class="container py-16 md:py-20">
+          <h2 class="text-[48px] font-normal leading-normal tracking-[0.8px] text-[var(--color-text-primary)] mb-12" style="font-family: 'JetBrains Mono', monospace;">
+            When to Consider BYOC?
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="border border-[var(--color-border)] rounded-[12px] p-8 bg-[var(--color-bg-primary)] relative overflow-hidden">
+              <div class="absolute top-0 left-0 w-1 h-full" style="background: linear-gradient(180deg, #00ED20 0%, #00ED20 100%);"></div>
+              <div class="flex items-center gap-3 mb-4">
+                <i class="ph-bold ph-check-circle text-[28px]" style="color: #00ED20;"></i>
+                <h3 class="text-[20px] font-semibold text-[var(--color-text-primary)]">
+                  Good Fit
+                </h3>
+              </div>
+              <ul class="space-y-2">
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Strict compliance (SOC 2, HIPAA)</span>
+                </li>
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Sensitive data (PII, financial)</span>
+                </li>
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Enterprise customers demand it</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="border border-[var(--color-border)] rounded-[12px] p-8 bg-[var(--color-bg-primary)] relative overflow-hidden">
+              <div class="absolute top-0 left-0 w-1 h-full" style="background: linear-gradient(180deg, #F5A623 0%, #F5A623 100%);"></div>
+              <div class="flex items-center gap-3 mb-4">
+                <i class="ph-bold ph-warning text-[28px]" style="color: #F5A623;"></i>
+                <h3 class="text-[20px] font-semibold text-[var(--color-text-primary)]">
+                  Consider Carefully
+                </h3>
+              </div>
+              <ul class="space-y-2">
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Small team without DevOps</span>
+                </li>
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Rapidly changing product</span>
+                </li>
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Consumer-focused product</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Horizontal Line -->
+    <div class="w-full h-px bg-[var(--color-border)]"></div>
+
+    <!-- CTA Section -->
+    <section class="relative py-20 md:py-24 overflow-hidden">
+      <!-- Full-width Overlay Image within frame -->
+      <div class="absolute inset-0 left-[20px] right-[20px] md:left-[40px] md:right-[40px] lg:left-[120px] lg:right-[120px]">
+        <img
+          src="/cta-overlay.png"
+          alt=""
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <div class="container relative z-10 text-center">
+        <h2 class="text-[32px] leading-[40px] font-medium tracking-tight text-[var(--color-text-primary)] mb-4" style="font-family: 'JetBrains Mono', monospace;">
+          Know a great BYOC tool?
+        </h2>
+        <p class="text-[18px] leading-[27px] text-[var(--color-text-secondary)] mb-8">
+          This directory is open source. Submit a PR to add tools or improve the site.
+        </p>
+        <a
+          href="https://github.com/nuonco/awesome-byoc"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-text-primary)] text-[var(--color-bg-primary)] border border-[var(--color-text-primary)] rounded-[10px] font-medium text-[14px] hover:opacity-90 transition-all"
+        >
+          <i class="ph-bold ph-github-logo text-[20px]"></i>
+          Open a PR
+        </a>
+      </div>
+    </section>
+    </div>
+  <Footer />
+</Layout>
