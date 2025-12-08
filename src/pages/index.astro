@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ToolCard from '../components/ToolCard.astro';
 import CategoryCard from '../components/CategoryCard.astro';
+import SwipeExplorer from '../components/SwipeExplorer.astro';
 import { getFeaturedTools, categories, tools } from '../data/tools';
 
 const featuredTools = getFeaturedTools();
@@ -15,41 +16,34 @@ const categoryList = Object.keys(categories) as (keyof typeof categories)[];
 
   <main class="flex-1">
     <!-- Hero Section -->
-    <section class="relative overflow-hidden bg-gradient-to-b from-[var(--color-slate-50)] to-[var(--color-surface)] py-20 md:py-28">
+    <section class="relative overflow-hidden bg-gradient-to-b from-[var(--color-slate-50)] to-[var(--color-surface)] py-8 md:py-12">
       <div class="absolute inset-0 bg-grid opacity-50"></div>
       <div class="container relative">
         <div class="max-w-3xl mx-auto text-center">
-          <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 text-sm font-medium rounded-full bg-[var(--color-accent-100)] text-[var(--color-accent-700)]">
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-            Community-curated catalog
-          </div>
-
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-text-primary)] mb-6 text-balance">
-            The best <span class="text-gradient">BYOC tools</span> — curated by developers
+          <h1 class="hero-title text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-text-primary)] mb-4 text-balance">
+            <span class="text-[var(--color-accent-500)]">&gt;</span>bring your own<span class="blinking-cursor">_</span>
           </h1>
 
-          <p class="text-lg md:text-xl text-[var(--color-text-secondary)] mb-8 max-w-2xl mx-auto">
-            Discover self-hostable and bring-your-own-cloud infrastructure tools. No vendor lock-in. Your cloud, your rules.
+          <p class="text-lg md:text-xl text-[var(--color-text-secondary)] mb-6 max-w-2xl mx-auto">
+            Discover self-hostable and bring-your-own-cloud infrastructure tools.
           </p>
 
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="/tools" class="btn btn-primary">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-              Explore Tools
-            </a>
-            <a href="/submit" class="btn btn-secondary">
+            <a href="/submit" class="btn btn-primary">
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
               </svg>
               Submit a Tool
             </a>
+            <a href="/about" class="btn btn-secondary">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Learn More
+            </a>
           </div>
 
-          <div class="mt-12 flex items-center justify-center gap-8 text-sm text-[var(--color-text-muted)]">
+          <div class="mt-6 flex items-center justify-center gap-8 text-sm text-[var(--color-text-muted)]">
             <div class="flex items-center gap-2">
               <span class="w-2 h-2 rounded-full bg-[var(--color-success)]"></span>
               {tools.length} tools indexed
@@ -68,10 +62,10 @@ const categoryList = Object.keys(categories) as (keyof typeof categories)[];
     </section>
 
     <!-- What is BYOC Section -->
-    <section class="py-16 md:py-20 bg-[var(--color-surface)]">
+    <section class="py-6 md:py-8 bg-[var(--color-surface)]">
       <div class="container">
         <div class="max-w-3xl mx-auto">
-          <div class="terminal mb-8">
+          <div class="terminal">
             <div class="flex items-center gap-2 mb-4 pb-3 border-b border-[var(--color-slate-700)]">
               <span class="w-3 h-3 rounded-full bg-red-500"></span>
               <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
@@ -103,12 +97,28 @@ const categoryList = Object.keys(categories) as (keyof typeof categories)[];
               </p>
             </div>
           </div>
+
+          <!-- Bouncing Arrow -->
+          <div class="flex justify-center mt-6">
+            <a href="#explore-section" class="bounce-arrow text-[var(--color-accent-500)] hover:text-[var(--color-accent-600)] transition-colors">
+              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- Just Exploring - Swipe Section -->
+    <section id="explore-section" class="py-8 md:py-12 bg-[var(--color-slate-50)]">
+      <div class="container">
+        <SwipeExplorer />
+      </div>
+    </section>
+
     <!-- Featured Tools Section -->
-    <section class="py-16 md:py-20 bg-[var(--color-slate-50)]">
+    <section class="py-16 md:py-20 bg-[var(--color-surface)]">
       <div class="container">
         <div class="flex items-center justify-between mb-8">
           <div>

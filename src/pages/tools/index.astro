@@ -4,6 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import ToolCard from '../../components/ToolCard.astro';
 import { tools, categories, type Category } from '../../data/tools';
+import { exampleCompanies } from '../../data/exampleCompanies';
 
 const categoryList = Object.entries(categories) as [Category, { label: string; description: string; icon: string }][];
 const languages = [...new Set(tools.filter(t => t.language).map(t => t.language))].sort();
@@ -29,6 +30,20 @@ const cloudOptions = ['aws', 'gcp', 'azure', 'on-prem', 'any'];
         <!-- Filters Sidebar -->
         <aside class="lg:w-64 shrink-0">
           <div class="bg-[var(--color-surface)] rounded-xl border border-[var(--color-slate-200)] p-6 sticky top-24">
+            <!-- Saved Examples Banner (hidden by default, shown via JS when filter=saved) -->
+            <div id="saved-banner" class="hidden mb-6 p-4 bg-gradient-to-r from-[var(--color-accent-50)] to-[var(--color-accent-100)] rounded-lg border border-[var(--color-accent-200)]">
+              <div class="flex items-center gap-2 mb-2">
+                <svg class="w-5 h-5 text-[var(--color-accent-600)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                </svg>
+                <span class="font-semibold text-[var(--color-accent-700)]">Your Saved Examples</span>
+              </div>
+              <p class="text-sm text-[var(--color-accent-600)]" id="saved-count-text">Showing your saved BYOC examples</p>
+              <button id="clear-saved-filter" class="mt-2 text-sm text-[var(--color-accent-700)] hover:text-[var(--color-accent-800)] underline">
+                Show all tools instead
+              </button>
+            </div>
+
             <!-- Search -->
             <div class="mb-6">
               <label for="search" class="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
@@ -159,15 +174,55 @@ const cloudOptions = ['aws', 'gcp', 'azure', 'on-prem', 'any'];
             <h3 class="text-lg font-semibold text-[var(--color-text-primary)] mb-2">No tools found</h3>
             <p class="text-[var(--color-text-secondary)]">Try adjusting your filters or search term</p>
           </div>
+
+          <!-- Saved Examples Section (shown when filter=saved) -->
+          <div id="saved-examples-section" class="hidden">
+            <div class="mb-6">
+              <h2 class="text-xl font-bold text-[var(--color-text-primary)] mb-2">Your Saved BYOC Examples</h2>
+              <p class="text-[var(--color-text-secondary)] text-sm">Companies you saved while exploring BYOC offerings</p>
+            </div>
+            <div id="saved-examples-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- Saved example cards will be rendered here by JS -->
+            </div>
+            <div id="no-saved" class="hidden text-center py-12">
+              <svg class="w-16 h-16 mx-auto mb-4 text-[var(--color-slate-300)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+              </svg>
+              <h3 class="text-lg font-semibold text-[var(--color-text-primary)] mb-2">No saved examples yet</h3>
+              <p class="text-[var(--color-text-secondary)] mb-4">Go back to the homepage and swipe through BYOC examples to save some!</p>
+              <a href="/" class="btn btn-primary">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to Home
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </main>
 
+  <!-- Example companies data for JS -->
+  <script define:vars={{ exampleCompanies }}>
+    window.BYOC_EXAMPLE_COMPANIES = exampleCompanies;
+  </script>
+
   <Footer />
 </Layout>
 
 <script>
+  interface ExampleCompany {
+    id: string;
+    name: string;
+    description: string;
+    category: string;
+    link: string;
+    logo: string;
+    gradientFrom: string;
+    gradientTo: string;
+  }
+
   document.addEventListener('astro:page-load', () => {
     const searchInput = document.getElementById('search') as HTMLInputElement;
     const categoryFilter = document.getElementById('category-filter') as HTMLSelectElement;
@@ -179,6 +234,114 @@ const cloudOptions = ['aws', 'gcp', 'azure', 'on-prem', 'any'];
     const noResults = document.getElementById('no-results');
     const resultsCount = document.getElementById('results-count');
     const licenseCheckboxes = document.querySelectorAll('input[name="license"]') as NodeListOf<HTMLInputElement>;
+
+    // Saved examples elements
+    const savedBanner = document.getElementById('saved-banner');
+    const savedExamplesSection = document.getElementById('saved-examples-section');
+    const savedExamplesGrid = document.getElementById('saved-examples-grid');
+    const noSaved = document.getElementById('no-saved');
+    const clearSavedFilter = document.getElementById('clear-saved-filter');
+    const savedCountText = document.getElementById('saved-count-text');
+
+    // Check for filter=saved in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const isSavedFilter = urlParams.get('filter') === 'saved';
+
+    function createSavedExampleCard(company: ExampleCompany): HTMLElement {
+      const card = document.createElement('a');
+      card.href = company.link;
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
+      card.className = 'card group relative overflow-hidden';
+
+      card.innerHTML = `
+        <div class="absolute inset-0 opacity-10" style="background: linear-gradient(135deg, ${company.gradientFrom} 0%, ${company.gradientTo} 100%);"></div>
+        <div class="relative">
+          <div class="flex items-start gap-4 mb-3">
+            <div class="w-12 h-12 rounded-lg bg-white border border-[var(--color-slate-200)] flex items-center justify-center p-2 shrink-0">
+              <img
+                src="${company.logo}"
+                alt="${company.name}"
+                class="max-w-full max-h-full object-contain"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <span class="text-sm font-bold text-[var(--color-slate-600)] hidden">${company.name.substring(0, 2).toUpperCase()}</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-600)] transition-colors">${company.name}</h3>
+              <span class="inline-block px-2 py-0.5 text-xs font-medium rounded-full bg-[var(--color-accent-100)] text-[var(--color-accent-700)]">${company.category}</span>
+            </div>
+            <svg class="w-5 h-5 text-[var(--color-text-muted)] group-hover:text-[var(--color-accent-500)] transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </div>
+          <p class="text-sm text-[var(--color-text-secondary)] line-clamp-2">${company.description}</p>
+        </div>
+      `;
+
+      return card;
+    }
+
+    function renderSavedExamples(): void {
+      const savedIds: string[] = JSON.parse(localStorage.getItem('byoc-saved') || '[]');
+      const exampleCompanies: ExampleCompany[] = (window as any).BYOC_EXAMPLE_COMPANIES || [];
+
+      const savedCompanies = exampleCompanies.filter(c => savedIds.includes(c.id));
+
+      if (savedExamplesGrid) {
+        savedExamplesGrid.innerHTML = '';
+
+        if (savedCompanies.length > 0) {
+          savedCompanies.forEach(company => {
+            savedExamplesGrid.appendChild(createSavedExampleCard(company));
+          });
+          noSaved?.classList.add('hidden');
+        } else {
+          noSaved?.classList.remove('hidden');
+        }
+      }
+
+      if (savedCountText) {
+        savedCountText.textContent = `Showing ${savedCompanies.length} saved example${savedCompanies.length !== 1 ? 's' : ''}`;
+      }
+
+      if (resultsCount) {
+        resultsCount.textContent = `Showing ${savedCompanies.length} saved examples`;
+      }
+    }
+
+    function showSavedMode(): void {
+      // Hide regular tools grid
+      if (toolsGrid) toolsGrid.style.display = 'none';
+      if (noResults) noResults.classList.add('hidden');
+
+      // Show saved elements
+      savedBanner?.classList.remove('hidden');
+      savedExamplesSection?.classList.remove('hidden');
+
+      // Render saved examples
+      renderSavedExamples();
+    }
+
+    function showNormalMode(): void {
+      // Show regular tools grid
+      if (toolsGrid) toolsGrid.style.display = '';
+
+      // Hide saved elements
+      savedBanner?.classList.add('hidden');
+      savedExamplesSection?.classList.add('hidden');
+
+      // Update URL
+      const url = new URL(window.location.href);
+      url.searchParams.delete('filter');
+      window.history.replaceState({}, '', url.toString());
+
+      // Re-run filter
+      filterAndSort();
+    }
+
+    // Clear saved filter button
+    clearSavedFilter?.addEventListener('click', showNormalMode);
 
     function filterAndSort() {
       const searchTerm = searchInput?.value.toLowerCase() || '';
@@ -297,9 +460,84 @@ const cloudOptions = ['aws', 'gcp', 'azure', 'on-prem', 'any'];
       filterAndSort();
     });
 
-    // Initial sort
-    filterAndSort();
+    // Initialize based on filter mode
+    if (isSavedFilter) {
+      showSavedMode();
+    } else {
+      filterAndSort();
+    }
   });
+
+  // Also run on DOMContentLoaded for standard navigation
+  function initToolsPage() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const isSavedFilter = urlParams.get('filter') === 'saved';
+
+    if (isSavedFilter) {
+      const savedBanner = document.getElementById('saved-banner');
+      const savedExamplesSection = document.getElementById('saved-examples-section');
+      const savedExamplesGrid = document.getElementById('saved-examples-grid');
+      const noSaved = document.getElementById('no-saved');
+      const toolsGrid = document.getElementById('tools-grid');
+      const noResults = document.getElementById('no-results');
+      const resultsCount = document.getElementById('results-count');
+      const savedCountText = document.getElementById('saved-count-text');
+
+      if (toolsGrid) toolsGrid.style.display = 'none';
+      if (noResults) noResults?.classList.add('hidden');
+      savedBanner?.classList.remove('hidden');
+      savedExamplesSection?.classList.remove('hidden');
+
+      const savedIds: string[] = JSON.parse(localStorage.getItem('byoc-saved') || '[]');
+      const exampleCompanies = (window as any).BYOC_EXAMPLE_COMPANIES || [];
+      const savedCompanies = exampleCompanies.filter((c: any) => savedIds.includes(c.id));
+
+      if (savedExamplesGrid) {
+        savedExamplesGrid.innerHTML = '';
+
+        if (savedCompanies.length > 0) {
+          savedCompanies.forEach((company: any) => {
+            const card = document.createElement('a');
+            card.href = company.link;
+            card.target = '_blank';
+            card.rel = 'noopener noreferrer';
+            card.className = 'card group relative overflow-hidden';
+            card.innerHTML = `
+              <div class="absolute inset-0 opacity-10" style="background: linear-gradient(135deg, ${company.gradientFrom} 0%, ${company.gradientTo} 100%);"></div>
+              <div class="relative">
+                <div class="flex items-start gap-4 mb-3">
+                  <div class="w-12 h-12 rounded-lg bg-white border border-[var(--color-slate-200)] flex items-center justify-center p-2 shrink-0">
+                    <img src="${company.logo}" alt="${company.name}" class="max-w-full max-h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                    <span class="text-sm font-bold text-[var(--color-slate-600)] hidden">${company.name.substring(0, 2).toUpperCase()}</span>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <h3 class="font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-600)] transition-colors">${company.name}</h3>
+                    <span class="inline-block px-2 py-0.5 text-xs font-medium rounded-full bg-[var(--color-accent-100)] text-[var(--color-accent-700)]">${company.category}</span>
+                  </div>
+                  <svg class="w-5 h-5 text-[var(--color-text-muted)] group-hover:text-[var(--color-accent-500)] transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </div>
+                <p class="text-sm text-[var(--color-text-secondary)] line-clamp-2">${company.description}</p>
+              </div>
+            `;
+            savedExamplesGrid.appendChild(card);
+          });
+          noSaved?.classList.add('hidden');
+        } else {
+          noSaved?.classList.remove('hidden');
+        }
+      }
+
+      if (savedCountText) savedCountText.textContent = `Showing ${savedCompanies.length} saved example${savedCompanies.length !== 1 ? 's' : ''}`;
+      if (resultsCount) resultsCount.textContent = `Showing ${savedCompanies.length} saved examples`;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initToolsPage);
+  if (document.readyState !== 'loading') {
+    initToolsPage();
+  }
 </script>
 
 <style>
