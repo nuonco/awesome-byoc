@@ -1,0 +1,128 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { featuredVendors, featuredCategories, getAllCategories } from '../../data/featuredVendors';
+
+const categories = getAllCategories();
+---
+
+<Layout title="Featured BYOC Architectures">
+  <Header />
+
+  <main class="flex-1 bg-[var(--color-slate-50)]">
+    <div class="container py-8 md:py-12">
+      <!-- Page Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-3xl md:text-4xl font-bold text-[var(--color-text-primary)] mb-4">
+          Featured BYOC Architectures
+        </h1>
+        <p class="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+          A curated showcase of excellent Bring Your Own Cloud implementations.
+          Each featured vendor demonstrates best practices in BYOC architecture.
+        </p>
+      </div>
+
+      <!-- Category Sections -->
+      <div class="max-w-4xl mx-auto space-y-12">
+        {categories.map((categoryKey) => {
+          const category = featuredCategories[categoryKey];
+          const vendors = featuredVendors.filter((v) => v.category === categoryKey);
+
+          if (vendors.length === 0) return null;
+
+          return (
+            <section>
+              <div class="mb-6">
+                <h2 class="text-2xl font-bold text-[var(--color-text-primary)] mb-2">
+                  {category?.label || categoryKey}
+                </h2>
+                <p class="text-[var(--color-text-secondary)]">
+                  {category?.description}
+                </p>
+              </div>
+
+              <div class="space-y-6">
+                {vendors.map((vendor) => (
+                  <a
+                    href={`/featured/${vendor.id}`}
+                    class="block bg-[var(--color-surface)] rounded-xl border border-[var(--color-slate-200)] p-6 hover:border-[var(--color-accent-300)] hover:shadow-lg transition-all group"
+                  >
+                    <!-- Header -->
+                    <div class="flex items-start gap-4 mb-4">
+                      <div class="w-12 h-12 rounded-lg bg-white border border-[var(--color-slate-200)] flex items-center justify-center p-2 shrink-0">
+                        <img
+                          src={vendor.logo}
+                          alt={vendor.name}
+                          class="max-w-full max-h-full object-contain"
+                          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                        />
+                        <span class="text-sm font-bold text-[var(--color-slate-600)] hidden items-center justify-center">
+                          {vendor.name.substring(0, 2).toUpperCase()}
+                        </span>
+                      </div>
+                      <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-600)] transition-colors">
+                          {vendor.name}
+                        </h3>
+                        <p class="text-sm text-[var(--color-text-muted)]">{vendor.tagline}</p>
+                      </div>
+                      <svg class="w-5 h-5 text-[var(--color-text-muted)] group-hover:text-[var(--color-accent-500)] transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+
+                    <!-- ASCII-style Table -->
+                    <div class="bg-[var(--color-slate-50)] rounded-lg p-4 font-mono text-sm mb-4 overflow-x-auto">
+                      <pre class="text-[var(--color-text-secondary)]"><code>| BYOC Offer             | {vendor.byocOfferSummary.padEnd(52).substring(0, 52)} |
+| What Makes This Great  | {vendor.whatMakesThisGreat.substring(0, 52).padEnd(52)} |</code></pre>
+                    </div>
+
+                    <!-- Highlights -->
+                    <div class="space-y-2">
+                      <h4 class="text-sm font-semibold text-[var(--color-text-primary)]">Highlights</h4>
+                      <ul class="space-y-1">
+                        {vendor.highlights.map((highlight) => (
+                          <li class="flex items-start gap-2 text-sm text-[var(--color-text-secondary)]">
+                            <svg class="w-4 h-4 text-[var(--color-success)] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <!-- Read More -->
+                    <div class="mt-4 pt-4 border-t border-[var(--color-slate-200)]">
+                      <span class="text-sm font-medium text-[var(--color-accent-600)] group-hover:text-[var(--color-accent-700)]">
+                        Read full analysis →
+                      </span>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </section>
+          );
+        })}
+      </div>
+
+      <!-- CTA -->
+      <div class="max-w-4xl mx-auto mt-16 text-center">
+        <div class="bg-[var(--color-surface)] rounded-xl border border-[var(--color-slate-200)] p-8">
+          <h2 class="text-xl font-bold text-[var(--color-text-primary)] mb-2">
+            Know a great BYOC implementation?
+          </h2>
+          <p class="text-[var(--color-text-secondary)] mb-4">
+            We're always looking for excellent examples to feature. Let us know!
+          </p>
+          <a href="/submit" class="btn btn-primary">
+            Suggest a Featured Vendor
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

@@ -377,6 +377,33 @@ import Footer from '../components/Footer.astro';
 
           <hr class="border-[var(--color-slate-200)]" />
 
+          <!-- Featured Architectures CTA -->
+          <section id="featured">
+            <div class="bg-gradient-to-r from-[var(--color-accent-50)] to-[var(--color-accent-100)] rounded-xl border border-[var(--color-accent-200)] p-6">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-lg bg-[var(--color-accent-500)] flex items-center justify-center shrink-0">
+                  <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h2 class="text-xl font-bold text-[var(--color-accent-800)] mb-2">Featured BYOC Architectures</h2>
+                  <p class="text-[var(--color-accent-700)] mb-4">
+                    Learn from the best. We've analyzed excellent BYOC implementations from companies like Temporal, Neon, and Grafana—with detailed breakdowns of what makes their architectures great.
+                  </p>
+                  <a href="/featured" class="inline-flex items-center gap-2 px-4 py-2 bg-[var(--color-accent-500)] text-white rounded-lg font-medium hover:bg-[var(--color-accent-600)] transition-colors">
+                    Explore Featured Architectures
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <hr class="border-[var(--color-slate-200)]" />
+
           <!-- Contributing -->
           <section>
             <h2 class="text-2xl font-bold text-[var(--color-text-primary)] mb-4">Contributing</h2>
