@@ -1,12 +1,10 @@
 # Awesome BYOC Tools
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
 A curated list of **Bring Your Own Cloud (BYOC)** tools and self-hostable infrastructure software for developers.
 
 > **BYOC** (Bring Your Own Cloud) is a deployment model where software runs in *your* cloud account instead of a vendor's. This gives you data sovereignty, compliance control, cost transparency, and no vendor lock-in.
 
-**[View the website](https://byoc.dev)** | **[Submit a tool](https://byoc.dev/submit)**
+**[View the website](https://buildyourown.dev)**
 
 ---
 
@@ -129,7 +127,7 @@ A curated list of **Bring Your Own Cloud (BYOC)** tools and self-hostable infras
 
 Contributions welcome! Please read the [contributing guidelines](CONTRIBUTING.md) first.
 
-- **Submit a tool**: Use the [website form](https://byoc.dev/submit) or open a PR
+- **Add a tool**: Open a PR to add to the list
 - **Report issues**: Open an issue on GitHub
 - **Improve docs**: PRs for documentation improvements are appreciated
 
