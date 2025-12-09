@@ -721,6 +721,174 @@
     background: var(--color-accent-500);
     transform: scale(1.25);
   }
+
+  /* Collapsible Category Accordion */
+  .category-accordion {
+    border: 1px solid var(--color-slate-200);
+    border-radius: var(--radius-lg);
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    background: var(--color-surface-card);
+  }
+
+  [data-theme="dark"] .category-accordion {
+    border-color: var(--color-slate-700);
+  }
+
+  .category-accordion summary {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+    transition: background-color var(--transition-fast) ease;
+  }
+
+  .category-accordion summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .category-accordion summary:hover {
+    background-color: var(--color-slate-50);
+  }
+
+  [data-theme="dark"] .category-accordion summary:hover {
+    background-color: var(--color-slate-800);
+  }
+
+  .category-accordion[open] summary {
+    border-bottom: 1px solid var(--color-slate-200);
+  }
+
+  [data-theme="dark"] .category-accordion[open] summary {
+    border-bottom-color: var(--color-slate-700);
+  }
+
+  .category-accordion-icon {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    background-color: var(--color-accent-50);
+    color: var(--color-accent-600);
+    flex-shrink: 0;
+  }
+
+  [data-theme="dark"] .category-accordion-icon {
+    background-color: var(--color-accent-900);
+    color: var(--color-accent-300);
+  }
+
+  .category-accordion-icon svg {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
+  .category-accordion-title {
+    flex: 1;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .category-accordion-count {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    padding: 0.125rem 0.5rem;
+    background-color: var(--color-slate-100);
+    border-radius: 9999px;
+  }
+
+  [data-theme="dark"] .category-accordion-count {
+    background-color: var(--color-slate-800);
+  }
+
+  .category-accordion-chevron {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--color-text-muted);
+    transition: transform var(--transition-fast) ease;
+    flex-shrink: 0;
+  }
+
+  .category-accordion[open] .category-accordion-chevron {
+    transform: rotate(180deg);
+  }
+
+  .category-accordion-content {
+    padding: 1rem 1.25rem;
+  }
+
+  .category-accordion-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .category-accordion-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Tools search box */
+  .tools-search-container {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .tools-search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--color-text-muted);
+    pointer-events: none;
+  }
+
+  .tools-search-input {
+    width: 100%;
+    padding: 0.875rem 1rem 0.875rem 3rem;
+    font-size: var(--text-base);
+    border: 1px solid var(--color-slate-300);
+    border-radius: var(--radius-xl);
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
+    transition: all var(--transition-fast) ease;
+  }
+
+  .tools-search-input:focus {
+    outline: none;
+    border-color: var(--color-accent-500);
+    box-shadow: 0 0 0 3px var(--color-accent-100);
+  }
+
+  [data-theme="dark"] .tools-search-input {
+    background-color: var(--color-slate-800);
+    border-color: var(--color-slate-600);
+  }
+
+  [data-theme="dark"] .tools-search-input:focus {
+    box-shadow: 0 0 0 3px var(--color-accent-900);
+  }
+
+  .tools-search-input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  /* Hidden state for filtered items */
+  .tool-item-hidden {
+    display: none !important;
+  }
+
+  .category-accordion-hidden {
+    display: none !important;
+  }
 }
 
 /* Utility classes */
