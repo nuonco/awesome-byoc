@@ -1,0 +1,171 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="About BYOC">
+  <div class="page-frame">
+  <Header />
+    <div class="frame-line frame-line-top"></div>
+    <div class="frame-line frame-line-left"></div>
+    <div class="frame-line frame-line-right"></div>
+
+    <main class="flex-1">
+      <div class="container py-12 md:py-16">
+        <!-- Page Header -->
+        <div class="mb-12">
+          <h1 class="h1 font-mono text-[var(--color-text-primary)] mb-4">
+            About BYOC
+          </h1>
+          <p class="text-base-large text-[var(--color-text-secondary)]">
+            A deep dive into Bring Your Own Cloud for engineering teams
+          </p>
+        </div>
+
+        <!-- Content -->
+        <div class="space-y-12">
+
+          <!-- What is BYOC -->
+          <section class="border-t border-[var(--color-border)] pt-12">
+              <h2 class="h2 font-mono text-[var(--color-text-primary)] mb-6">What is BYOC?</h2>
+              <p class="text-base-large text-[var(--color-text-secondary)] mb-12 leading-relaxed">
+                <strong class="text-[var(--color-text-primary)]">Bring Your Own Cloud (BYOC)</strong> is a deployment model where software runs in your own cloud infrastructure rather than in a vendor's shared environment.
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="flex items-start gap-4">
+                  <svg class="w-8 h-8 text-[var(--color-informative)] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.001 12.001 0 002.92 12c0 3.042 1.135 5.824 3.04 7.959l-.001.001A12.004 12.004 0 0012 21.055c3.179 0 6.113-1.164 8.382-3.046l-.001-.001C21.865 17.824 23 15.042 23 12c0-3.042-1.135-5.824-3.04-7.959z" />
+                  </svg>
+                  <div>
+                    <h3 class="text-body-strong text-[var(--color-text-primary)] mb-2">Data Sovereignty</h3>
+                    <p class="text-body text-[var(--color-text-secondary)]">Data never leaves your cloud account</p>
+              </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <svg class="w-8 h-8 text-[var(--color-informative)] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <div>
+                    <h3 class="text-body-strong text-[var(--color-text-primary)] mb-2">No Vendor Lock-in</h3>
+                    <p class="text-body text-[var(--color-text-secondary)]">Control your infrastructure completely</p>
+                </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <svg class="w-8 h-8 text-[var(--color-informative)] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                    <h3 class="text-body-strong text-[var(--color-text-primary)] mb-2">Cost Transparency</h3>
+                    <p class="text-body text-[var(--color-text-secondary)]">See all costs on your cloud bill</p>
+                </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <svg class="w-8 h-8 text-[var(--color-informative)] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                  </svg>
+                  <div>
+                    <h3 class="text-body-strong text-[var(--color-text-primary)] mb-2">Security Control</h3>
+                    <p class="text-body text-[var(--color-text-secondary)]">Apply your own security policies</p>
+                </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Architecture Patterns -->
+            <section class="border-t border-[var(--color-border)] pt-12">
+              <h2 class="h2 font-mono text-[var(--color-text-primary)] mb-6">Architecture Patterns</h2>
+              <div class="space-y-6">
+                <div class="p-6 bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-[12px]">
+                  <h3 class="text-body-strong text-[var(--color-text-primary)] mb-3">Control Plane / Data Plane Separation</h3>
+                  <p class="text-body text-[var(--color-text-secondary)] mb-4 leading-relaxed">
+                    Vendor operates a control plane while your data plane runs in your cloud.
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="badge badge-oss">Data stays local</span>
+                    <span class="badge badge-oss">Managed experience</span>
+                </div>
+              </div>
+
+                <div class="p-6 bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-[12px]">
+                  <h3 class="text-body-strong text-[var(--color-text-primary)] mb-3">Agent-Based Architecture</h3>
+                  <p class="text-body text-[var(--color-text-secondary)] mb-4 leading-relaxed">
+                    Lightweight agent in your environment communicates outbound to vendor services.
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="badge badge-oss">Minimal footprint</span>
+                    <span class="badge badge-oss">Easy updates</span>
+                </div>
+              </div>
+
+                <div class="p-6 bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-[12px]">
+                  <h3 class="text-body-strong text-[var(--color-text-primary)] mb-3">Full Self-Hosted / Air-Gapped</h3>
+                  <p class="text-body text-[var(--color-text-secondary)] mb-4 leading-relaxed">
+                    Entire application runs in your environment with no vendor dependency.
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="badge badge-oss">Complete isolation</span>
+                    <span class="badge badge-oss">Air-gap ready</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+            <!-- When to BYOC -->
+            <section class="border-t border-[var(--color-border)] pt-12">
+              <h2 class="h2 font-mono text-[var(--color-text-primary)] mb-6">When to Consider BYOC</h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="p-6 bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-[12px]">
+                  <h3 class="text-body-strong text-[var(--color-text-primary)] mb-3 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-[var(--color-informative)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  Good Fit
+                </h3>
+                  <ul class="text-body text-[var(--color-text-secondary)] space-y-2">
+                    <li>• Strict compliance (SOC 2, HIPAA)</li>
+                    <li>• Sensitive data (PII, financial)</li>
+                    <li>• Enterprise customers demand it</li>
+                </ul>
+              </div>
+
+                <div class="p-6 bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-[12px]">
+                  <h3 class="text-body-strong text-[var(--color-text-primary)] mb-3 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                  Consider Carefully
+                </h3>
+                  <ul class="text-body text-[var(--color-text-secondary)] space-y-2">
+                    <li>• Small team without DevOps</li>
+                    <li>• Rapidly changing product</li>
+                    <li>• Consumer-focused product</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Contributing -->
+            <section class="border-t border-[var(--color-border)] pt-12">
+              <h2 class="h2 font-mono text-[var(--color-text-primary)] mb-4">Contributing</h2>
+              <p class="text-base-large text-[var(--color-text-secondary)] mb-8">
+                This directory is open source. We welcome contributions!
+            </p>
+            <a
+              href="https://github.com/nuonco/awesome-byoc"
+              target="_blank"
+              rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-text-primary)] text-[var(--color-bg-primary)] border border-[var(--color-text-primary)] rounded-[10px] font-medium text-[14px] hover:opacity-90 transition-all"
+            >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                View on GitHub
+            </a>
+          </section>
+        </div>
+      </div>
+    </main>
+    </div>
+  <Footer />
+</Layout>

@@ -1,0 +1,125 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Discover the best BYOC (Bring Your Own Cloud) tools. A community-curated directory of self-hostable infrastructure for developers." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={`${title} | Awesome BYOC`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <title>awesome-byoc</title>
+
+    <!-- Theme initialization (prevent flash) -->
+    <script is:inline>
+      (function() {
+        try {
+          var theme = localStorage.getItem('theme');
+          if (!theme) {
+            theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <slot />
+
+    <!-- Click sound audio element -->
+    <audio id="click-sound" preload="auto">
+      <source src="/click.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script>
+      function playClickSound() {
+        const audio = document.getElementById('click-sound') as HTMLAudioElement;
+        if (audio) {
+          audio.currentTime = 0;
+          audio.volume = 0.3;
+          audio.play().catch(() => {});
+        }
+      }
+
+      function getTheme(): string {
+        return document.documentElement.getAttribute('data-theme') || 'light';
+      }
+
+      function updateIcons(theme: string): void {
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        
+        if (sunIcon && moonIcon) {
+          if (theme === 'dark') {
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+          } else {
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
+          }
+        }
+      }
+
+      function setTheme(theme: string, playSound: boolean = false): void {
+        document.documentElement.setAttribute('data-theme', theme);
+        try {
+          localStorage.setItem('theme', theme);
+        } catch (e) {}
+        updateIcons(theme);
+        
+        if (playSound) {
+          playClickSound();
+        }
+      }
+
+      function toggleTheme(): void {
+        const currentTheme = getTheme();
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme, true);
+      }
+
+      function setupThemeToggle(): void {
+        // Update icons for current theme
+        updateIcons(getTheme());
+
+        // Setup toggle button
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+          // Clone to remove old listeners
+          const newToggle = themeToggle.cloneNode(true) as HTMLElement;
+          themeToggle.parentNode?.replaceChild(newToggle, themeToggle);
+          newToggle.addEventListener('click', toggleTheme);
+        }
+      }
+
+      // Initialize on page load
+      document.addEventListener('DOMContentLoaded', setupThemeToggle);
+      document.addEventListener('astro:page-load', setupThemeToggle);
+    </script>
+  </body>
+</html>

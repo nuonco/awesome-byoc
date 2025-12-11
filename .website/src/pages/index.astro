@@ -1,0 +1,281 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ToolCard from '../components/ToolCard.astro';
+import { getTools, getToolsByCategorySync, categories, type Category } from '../data/tools';
+
+const tools = await getTools();
+const categoryList = Object.entries(categories) as [Category, { label: string; description: string; icon: string }][];
+---
+
+<Layout title="Discover BYOC Tools">
+  <main class="flex-1">
+    <!-- Page wrapper with frame lines -->
+    <div class="page-frame">
+      <!-- Left line -->
+      <div class="frame-line frame-line-left"></div>
+      <!-- Right line -->
+      <div class="frame-line frame-line-right"></div>
+
+      <!-- Top line -->
+      <div class="frame-line frame-line-top"></div>
+
+      <!-- Header inside the frame -->
+      <Header />
+
+      <!-- Hero Section -->
+      <section class="hero-section relative overflow-hidden">
+        <!-- Hero Overlay -->
+        <div class="absolute inset-0 left-[120px] right-[120px] pointer-events-none">
+          <img
+            src="/hero-overlay.png"
+            alt=""
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+        <div class="hero-inner relative z-10">
+          <div class="hero-content">
+            <!-- Headline -->
+            <h1 class="hero-title" style="white-space: nowrap;">
+              Bring Your Own Cloud
+            </h1>
+
+            <!-- Subheadline -->
+            <p class="hero-subtitle">
+              A community-curated directory of self-<br class="hidden md:block" />
+              hostable infrastructure tools.
+            </p>
+
+            <!-- CTA buttons -->
+            <div class="hero-actions">
+              <a
+                href="https://github.com/nuonco/awesome-byoc"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hero-btn-secondary"
+                style="font-family: 'JetBrains Mono', monospace;"
+              >
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                Contribute
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom border line -->
+        <div class="hero-line hero-line-bottom"></div>
+      </section>
+
+    <!-- Tools Section -->
+    <section id="tools" class="py-20 md:py-24 border-t border-[var(--color-border)]">
+      <div class="container">
+        <!-- Section header with search -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+          <div>
+            <h2 class="text-[48px] font-normal leading-normal tracking-[0.8px] text-[var(--color-text-primary)] mb-3" style="font-family: 'JetBrains Mono', monospace;">
+              All Tools
+            </h2>
+            <p class="text-[18px] leading-[27px] tracking-[-0.2px] text-[var(--color-text-secondary)]">
+              {tools.length} tools across {categoryList.length} categories
+            </p>
+          </div>
+
+          <!-- Search -->
+          <div class="search-container w-full md:w-96">
+            <svg class="search-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input
+              type="text"
+              id="tools-search"
+              placeholder="Search tools..."
+              class="search-input text-[16px]"
+            />
+          </div>
+        </div>
+
+        <!-- Category filters -->
+        <div class="flex flex-wrap gap-2 mb-12" id="category-filters">
+          <button
+            class="category-pill active"
+            data-category="all"
+          >
+            All
+          </button>
+          {categoryList.map(([categoryKey, categoryInfo]) => (
+            <button
+              class="category-pill"
+              data-category={categoryKey}
+            >
+              {categoryInfo.label}
+            </button>
+          ))}
+        </div>
+
+        <!-- Tools by category -->
+        <div id="categories-container">
+          {categoryList.map(([categoryKey, categoryInfo]) => {
+            const categoryTools = getToolsByCategorySync(tools, categoryKey);
+            if (categoryTools.length === 0) return null;
+            return (
+              <div
+                class="category-section"
+                data-category={categoryKey}
+              >
+                <div class="category-header">
+                  <div class="category-icon" set:html={categoryInfo.icon} />
+                  <h3 class="category-name">{categoryInfo.label}</h3>
+                  <span class="category-count" data-count={categoryTools.length}>
+                    {categoryTools.length}
+                  </span>
+                </div>
+                <div class="category-grid">
+                  {categoryTools.map((tool) => (
+                    <div
+                      class="tool-item"
+                      data-name={tool.name.toLowerCase()}
+                      data-description={tool.description.toLowerCase()}
+                      data-tags={tool.tags.join(' ').toLowerCase()}
+                    >
+                      <ToolCard tool={tool} compact />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <!-- No Results -->
+        <div id="no-results" class="hidden text-center py-16">
+          <div class="w-12 h-12 mx-auto mb-3 rounded-lg bg-[var(--color-bg-secondary)] border border-[var(--color-border)] flex items-center justify-center">
+            <svg class="w-5 h-5 text-[var(--color-text-tertiary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+          </div>
+          <h3 class="text-sm font-medium text-[var(--color-text-primary)] mb-1">No tools found</h3>
+          <p class="text-xs text-[var(--color-text-tertiary)]">Try a different search term</p>
+        </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="relative py-20 md:py-24 border-t border-[var(--color-border)] overflow-hidden">
+    <!-- Full-width Overlay Image within frame -->
+    <div class="absolute inset-0 left-[120px] right-[120px]">
+      <img
+        src="/cta-overlay.png"
+        alt=""
+        class="w-full h-full object-cover"
+      />
+    </div>
+
+    <div class="container relative z-10 text-center">
+      <h2 class="text-[32px] leading-[40px] font-medium tracking-tight text-[var(--color-text-primary)] mb-4" style="font-family: 'JetBrains Mono', monospace;">
+        Know a great BYOC tool?
+      </h2>
+      <p class="text-[18px] leading-[27px] text-[var(--color-text-secondary)] mb-8">
+        This directory is open source. Submit a PR to add tools or improve the site.
+      </p>
+      <a
+        href="https://github.com/nuonco/awesome-byoc"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-text-primary)] text-[var(--color-bg-primary)] border border-[var(--color-text-primary)] rounded-[10px] font-medium text-[14px] hover:opacity-90 transition-all"
+      >
+        <i class="ph-bold ph-github-logo text-[20px]"></i>
+        Open a PR
+      </a>
+    </div>
+  </section>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  document.addEventListener('astro:page-load', initSearch);
+  document.addEventListener('DOMContentLoaded', initSearch);
+
+  function initSearch() {
+    const searchInput = document.getElementById('tools-search') as HTMLInputElement;
+    const categoriesContainer = document.getElementById('categories-container');
+    const noResults = document.getElementById('no-results');
+    const categoryFilters = document.querySelectorAll('[data-category]') as NodeListOf<HTMLButtonElement>;
+
+    if (!searchInput || !categoriesContainer) return;
+
+    let activeCategory = 'all';
+
+    categoryFilters.forEach((btn) => {
+      if (btn.closest('#category-filters')) {
+        btn.addEventListener('click', () => {
+          activeCategory = btn.dataset.category || 'all';
+
+          document.querySelectorAll('#category-filters .category-pill').forEach((pill) => {
+            pill.classList.remove('active');
+          });
+          btn.classList.add('active');
+
+          filterTools();
+        });
+      }
+    });
+
+    searchInput.addEventListener('input', filterTools);
+
+    function filterTools() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      let totalVisible = 0;
+
+      document.querySelectorAll('.category-section').forEach((section) => {
+        const sectionCategory = (section as HTMLElement).dataset.category;
+        const toolItems = section.querySelectorAll('.tool-item');
+        let categoryVisible = 0;
+
+        const categoryMatch = activeCategory === 'all' || sectionCategory === activeCategory;
+
+        toolItems.forEach((item) => {
+          const name = item.getAttribute('data-name') || '';
+          const description = item.getAttribute('data-description') || '';
+          const tags = item.getAttribute('data-tags') || '';
+
+          const searchMatch = !searchTerm ||
+            name.includes(searchTerm) ||
+            description.includes(searchTerm) ||
+            tags.includes(searchTerm);
+
+          if (categoryMatch && searchMatch) {
+            (item as HTMLElement).classList.remove('tool-hidden');
+            categoryVisible++;
+            totalVisible++;
+          } else {
+            (item as HTMLElement).classList.add('tool-hidden');
+          }
+        });
+
+        if (categoryVisible === 0 || !categoryMatch) {
+          (section as HTMLElement).classList.add('category-hidden');
+        } else {
+          (section as HTMLElement).classList.remove('category-hidden');
+        }
+
+        const countEl = section.querySelector('.category-count');
+        if (countEl) {
+          countEl.textContent = categoryVisible.toString();
+        }
+      });
+
+      if (totalVisible === 0) {
+        noResults?.classList.remove('hidden');
+      } else {
+        noResults?.classList.add('hidden');
+      }
+    }
+  }
+</script>

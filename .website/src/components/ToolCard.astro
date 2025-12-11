@@ -1,0 +1,158 @@
+---
+import type { Tool } from '../data/tools';
+
+interface Props {
+  tool: Tool;
+  compact?: boolean;
+}
+
+const { tool, compact = false } = Astro.props;
+
+const formatStars = (stars?: number) => {
+  if (!stars) return null;
+  if (stars >= 1000) {
+    return `${(stars / 1000).toFixed(1)}k`;
+  }
+  return stars.toString();
+};
+
+---
+
+<a href={`/tools/${tool.id}`} class="showcase-card group">
+  <!-- Dark image area with overlay -->
+  <div class="showcase-card-image">
+    <!-- Default overlay -->
+    <div class="card-overlay-default">
+      <img src="/default-overlay.png" alt="" class="overlay-image" />
+    </div>
+    
+    <!-- Hover overlay -->
+    <div class="card-overlay-hover">
+      <img src="/overlay-hover.png" alt="" class="overlay-image" />
+    </div>
+    
+    <!-- Tool logo in center -->
+    <div class="showcase-card-content">
+      {tool.logo ? (
+        <img src={tool.logo} alt={tool.name} class="tool-logo" />
+      ) : (
+        <span class="tool-display-name">{tool.name}</span>
+      )}
+    </div>
+
+  </div>
+  
+  <!-- Info section -->
+  <div class="showcase-card-info">
+    <div>
+      <h3 class="showcase-card-title">{tool.name}</h3>
+      <p class="showcase-card-description">{tool.description}</p>
+    </div>
+    
+    <!-- Stats row -->
+    {(tool.stars || tool.language) && (
+      <div class="tool-stats">
+        {tool.github && tool.stars && (
+          <div class="stat">
+            <svg class="stat-icon" fill="currentColor" viewBox="0 0 20 20" width="20" height="20">
+              <path d="M10 1.25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L10 13.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L2.818 8.374a.75.75 0 0 1 .416-1.28l4.21-.611L9.327 2.668A.75.75 0 0 1 10 1.25Z"/>
+            </svg>
+            <span>{formatStars(tool.stars)}</span>
+          </div>
+        )}
+        {tool.language && (
+          <div class="stat">
+            <span class="language-dot"></span>
+            <span>{tool.language}</span>
+          </div>
+        )}
+      </div>
+    )}
+  </div>
+</a>
+
+<style>
+  .tool-display-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .tool-logo {
+    max-width: 180px;
+    max-height: 100px;
+    object-fit: contain;
+  }
+
+  @media (max-width: 768px) {
+    .tool-logo {
+      max-width: 140px;
+      max-height: 80px;
+    }
+  }
+
+  .tool-stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .stat {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: -0.2px;
+    color: var(--color-text-primary);
+  }
+
+  .stat-icon {
+    width: 20px;
+    height: 20px;
+    color: #ff8c00;
+  }
+
+  .language-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff8c00;
+  }
+
+  /* Overlay styles */
+  .card-overlay-default,
+  .card-overlay-hover {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .overlay-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-overlay-default {
+    opacity: 1;
+  }
+
+  .card-overlay-hover {
+    opacity: 0;
+  }
+
+  .showcase-card:hover .card-overlay-default {
+    opacity: 0;
+  }
+
+  .showcase-card:hover .card-overlay-hover {
+    opacity: 1;
+  }
+</style>

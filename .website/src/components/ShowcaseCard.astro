@@ -1,0 +1,36 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href?: string;
+  image?: string;
+  imageAlt?: string;
+}
+
+const { title, description, href = '#', image, imageAlt = title } = Astro.props;
+---
+
+<a href={href} class="showcase-card group">
+  <div class="showcase-card-image">
+    <!-- Corner markers -->
+    <span class="corner-mark top-left"></span>
+    <span class="corner-mark top-right"></span>
+    <span class="corner-mark bottom-left"></span>
+    <span class="corner-mark bottom-right"></span>
+    
+    <!-- Content/Image area -->
+    <div class="showcase-card-content">
+      {image ? (
+        <img src={image} alt={imageAlt} />
+      ) : (
+        <slot />
+      )}
+    </div>
+  </div>
+  
+  <div class="showcase-card-info">
+    <h3 class="showcase-card-title">{title}</h3>
+    <p class="showcase-card-description">{description}</p>
+  </div>
+</a>
+
