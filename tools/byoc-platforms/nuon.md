@@ -1,6 +1,6 @@
 ---
 name: Nuon
-description: Control Plane and Runner driven BYOC platform for deploying software to customer cloud environments
+description: Secure, continuous delivery into customer environments.
 homepage: https://nuon.co/
 docs: https://docs.nuon.co/
 category: byoc-platforms
