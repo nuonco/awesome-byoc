@@ -1,8 +1,8 @@
 ---
 name: WarpStream
 description: Kafka-compatible streaming by Confluent
-homepage: https://www.confluent.io/learn/bring-your-own-cloud/
-docs: https://docs.warpstream.com
+homepage: https://www.warpstream.com/bring-your-own-cloud-kafka-data-streaming
+docs: https://docs.warpstream.com/warpstream/reference/security-and-privacy-considerations#bring-your-own-cloud-byoc-clusters
 category: streaming
 tags:
   - kafka

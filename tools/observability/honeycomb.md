@@ -1,8 +1,8 @@
 ---
 name: Honeycomb
 description: Observability for distributed systems
-homepage: https://www.honeycomb.io/blog/honeycomb-launches-new-private-cloud-offering-address-security-compliance-cost-concerns
-docs: https://docs.honeycomb.io
+homepage: https://www.honeycomb.io/platform/private-cloud
+docs: https://docs.honeycomb.io/private-cloud/#what-is-honeycomb-private-cloud
 category: monitoring
 tags:
   - observability
