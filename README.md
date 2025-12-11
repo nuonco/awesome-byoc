@@ -25,7 +25,7 @@
 ### Streaming
 
 - [Redpanda](https://www.redpanda.com/product/bring-your-own-cloud-byoc) - Kafka-compatible streaming platform with 10x lower latency, no ZooKeeper dependency. ([Source Code](https://github.com/redpanda-data/redpanda))
-- [WarpStream](https://www.confluent.io/learn/bring-your-own-cloud/) - Kafka-compatible streaming from Confluent that runs entirely in your cloud with zero inter-zone networking costs.
+- [WarpStream](https://www.warpstream.com/bring-your-own-cloud-kafka-data-streaming) - Kafka-compatible streaming that runs entirely in your cloud with zero inter-zone networking costs.
 
 ### Observability
 
