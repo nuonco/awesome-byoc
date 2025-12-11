@@ -18,19 +18,19 @@ const formatStars = (stars?: number) => {
 
 ---
 
-<a href={`/tools/${tool.id}`} class="showcase-card group">
+<div class="showcase-card group">
   <!-- Dark image area with overlay -->
   <div class="showcase-card-image">
     <!-- Default overlay -->
     <div class="card-overlay-default">
       <img src="/default-overlay.png" alt="" class="overlay-image" />
     </div>
-    
+
     <!-- Hover overlay -->
     <div class="card-overlay-hover">
       <img src="/overlay-hover.png" alt="" class="overlay-image" />
     </div>
-    
+
     <!-- Tool logo in center -->
     <div class="showcase-card-content">
       {tool.logo ? (
@@ -40,15 +40,42 @@ const formatStars = (stars?: number) => {
       )}
     </div>
 
+    <!-- Hover buttons -->
+    <div class="hover-buttons">
+      <a
+        href={tool.homepage}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover-btn hover-btn-primary"
+      >
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+        Website
+      </a>
+      {tool.docs && (
+        <a
+          href={tool.docs}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover-btn hover-btn-secondary"
+        >
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+          Docs
+        </a>
+      )}
+    </div>
   </div>
-  
+
   <!-- Info section -->
   <div class="showcase-card-info">
     <div>
       <h3 class="showcase-card-title">{tool.name}</h3>
       <p class="showcase-card-description">{tool.description}</p>
     </div>
-    
+
     <!-- Stats row -->
     {(tool.stars || tool.language) && (
       <div class="tool-stats">
@@ -69,7 +96,7 @@ const formatStars = (stars?: number) => {
       </div>
     )}
   </div>
-</a>
+</div>
 
 <style>
   .tool-display-name {
@@ -154,5 +181,69 @@ const formatStars = (stars?: number) => {
 
   .showcase-card:hover .card-overlay-hover {
     opacity: 1;
+  }
+
+  /* Hover buttons */
+  .hover-buttons {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+
+  .showcase-card:hover .hover-buttons {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+  }
+
+  .hover-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .hover-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .hover-btn-primary {
+    background: var(--color-text-primary);
+    color: var(--color-bg-primary);
+    border: 1px solid var(--color-text-primary);
+  }
+
+  .hover-btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .hover-btn-secondary {
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+  }
+
+  html[data-theme="dark"] .hover-btn-secondary {
+    background: rgba(30, 30, 30, 0.95);
+    border-color: var(--color-border);
+  }
+
+  .hover-btn-secondary:hover {
+    border-color: var(--color-text-primary);
   }
 </style>
