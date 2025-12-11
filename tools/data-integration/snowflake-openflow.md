@@ -1,8 +1,8 @@
 ---
 name: Snowflake Openflow
 description: BYOC data integration from Snowflake
-homepage: https://www.snowflake.com/en/blog/openflow-byoc-data-integration/
-docs: https://docs.snowflake.com
+homepage: https://www.snowflake.com/en/product/features/openflow/
+docs: https://docs.snowflake.com/en/user-guide/data-integration/openflow/setup-openflow-byoc
 category: data-integration
 tags:
   - etl

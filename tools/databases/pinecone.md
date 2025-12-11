@@ -1,8 +1,8 @@
 ---
 name: Pinecone
 description: Vector database for AI applications
-homepage: https://docs.pinecone.io/guides/production/bring-your-own-cloud
-docs: https://docs.pinecone.io
+homepage: https://www.pinecone.io/product/bring-your-own-cloud/
+docs: https://docs.pinecone.io/guides/production/bring-your-own-cloud
 category: databases
 tags:
   - vector-database
