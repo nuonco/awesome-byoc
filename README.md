@@ -4,7 +4,7 @@
 
 **BYOC (Bring Your Own Cloud)** is a deployment model where software runs in *a customer's* cloud account instead of a vendor's shared environment. This provides customer's data sovereignty, compliance control, cost transparency, and avoids vendor lock-in.
 
-**[View the website](https://awesomebyoc.com)**
+**[View the website](https://www.awesomebyoc.com)**
 
 ## Contents
 
