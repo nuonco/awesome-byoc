@@ -61,38 +61,68 @@ import Footer from '../components/Footer.astro';
       <!-- Architecture Patterns -->
       <section>
         <div class="container py-16 md:py-20">
-          <h2 class="h2 font-mono text-[var(--color-text-primary)] mb-6">Architecture Patterns</h2>
-          <div class="space-y-6">
-                <div class="p-6 bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-[12px]">
-                  <h3 class="text-body-strong text-[var(--color-text-primary)] mb-3">Control Plane / Data Plane Separation</h3>
-                  <p class="text-body text-[var(--color-text-secondary)] mb-4 leading-relaxed">
-                    Vendor operates a control plane while your data plane runs in your cloud.
-                  </p>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="badge badge-oss">Data stays local</span>
-                    <span class="badge badge-oss">Managed experience</span>
-                </div>
-              </div>
+          <h2 class="text-[48px] font-normal leading-normal tracking-[0.8px] text-[var(--color-text-primary)] mb-12" style="font-family: 'JetBrains Mono', monospace;">
+            Architecture Patterns
+          </h2>
+          <div class="flex flex-col gap-6">
+            <div class="border border-[var(--color-border)] rounded-[12px] p-8 bg-[var(--color-bg-primary)] relative overflow-hidden">
+              <div class="absolute top-0 left-0 w-1 h-full" style="background: linear-gradient(180deg, #0070F3 0%, #0070F3 100%);"></div>
+              <h3 class="text-[20px] font-semibold text-[var(--color-text-primary)] mb-3">
+                Control Plane / Data Plane Separation
+              </h3>
+              <p class="text-body text-[var(--color-text-secondary)] mb-6 leading-relaxed">
+                Vendor operates a control plane while your data plane runs in your cloud.
+              </p>
+              <ul class="space-y-2">
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Data stays local</span>
+                </li>
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Managed experience</span>
+                </li>
+              </ul>
+            </div>
 
-                <div class="p-6 bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-[12px]">
-                  <h3 class="text-body-strong text-[var(--color-text-primary)] mb-3">Agent-Based Architecture</h3>
-                  <p class="text-body text-[var(--color-text-secondary)] mb-4 leading-relaxed">
-                    Lightweight agent in your environment communicates outbound to vendor services.
-                  </p>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="badge badge-oss">Minimal footprint</span>
-                    <span class="badge badge-oss">Easy updates</span>
-                </div>
-              </div>
+            <div class="border border-[var(--color-border)] rounded-[12px] p-8 bg-[var(--color-bg-primary)] relative overflow-hidden">
+              <div class="absolute top-0 left-0 w-1 h-full" style="background: linear-gradient(180deg, #7928CA 0%, #7928CA 100%);"></div>
+              <h3 class="text-[20px] font-semibold text-[var(--color-text-primary)] mb-3">
+                Agent-Based Architecture
+              </h3>
+              <p class="text-body text-[var(--color-text-secondary)] mb-6 leading-relaxed">
+                Lightweight agent in your environment communicates outbound to vendor services.
+              </p>
+              <ul class="space-y-2">
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Minimal footprint</span>
+                </li>
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Easy updates</span>
+                </li>
+              </ul>
+            </div>
 
-                <div class="p-6 bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-[12px]">
-                  <h3 class="text-body-strong text-[var(--color-text-primary)] mb-3">Full Self-Hosted / Air-Gapped</h3>
-                  <p class="text-body text-[var(--color-text-secondary)] mb-4 leading-relaxed">
-                    Entire application runs in your environment with no vendor dependency.
-                  </p>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="badge badge-oss">Complete isolation</span>
-                    <span class="badge badge-oss">Air-gap ready</span>
+            <div class="border border-[var(--color-border)] rounded-[12px] p-8 bg-[var(--color-bg-primary)] relative overflow-hidden">
+              <div class="absolute top-0 left-0 w-1 h-full" style="background: linear-gradient(180deg, #FF0080 0%, #FF0080 100%);"></div>
+              <h3 class="text-[20px] font-semibold text-[var(--color-text-primary)] mb-3">
+                Full Self-Hosted / Air-Gapped
+              </h3>
+              <p class="text-body text-[var(--color-text-secondary)] mb-6 leading-relaxed">
+                Entire application runs in your environment with no vendor dependency.
+              </p>
+              <ul class="space-y-2">
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Complete isolation</span>
+                </li>
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Air-gap ready</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -104,34 +134,57 @@ import Footer from '../components/Footer.astro';
       <!-- When to BYOC -->
       <section>
         <div class="container py-16 md:py-20">
-          <h2 class="h2 font-mono text-[var(--color-text-primary)] mb-6">When to Consider BYOC</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="p-6 bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-[12px]">
-                  <h3 class="text-body-strong text-[var(--color-text-primary)] mb-3 flex items-center gap-2">
-                    <svg class="w-5 h-5 text-[var(--color-informative)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
+          <h2 class="text-[48px] font-normal leading-normal tracking-[0.8px] text-[var(--color-text-primary)] mb-12" style="font-family: 'JetBrains Mono', monospace;">
+            When to Consider BYOC?
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="border border-[var(--color-border)] rounded-[12px] p-8 bg-[var(--color-bg-primary)] relative overflow-hidden">
+              <div class="absolute top-0 left-0 w-1 h-full" style="background: linear-gradient(180deg, #50E3C2 0%, #50E3C2 100%);"></div>
+              <div class="flex items-center gap-3 mb-4">
+                <i class="ph-bold ph-check-circle text-[28px]" style="color: #50E3C2;"></i>
+                <h3 class="text-[20px] font-semibold text-[var(--color-text-primary)]">
                   Good Fit
                 </h3>
-                  <ul class="text-body text-[var(--color-text-secondary)] space-y-2">
-                    <li>• Strict compliance (SOC 2, HIPAA)</li>
-                    <li>• Sensitive data (PII, financial)</li>
-                    <li>• Enterprise customers demand it</li>
-                </ul>
               </div>
+              <ul class="space-y-2">
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Strict compliance (SOC 2, HIPAA)</span>
+                </li>
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Sensitive data (PII, financial)</span>
+                </li>
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Enterprise customers demand it</span>
+                </li>
+              </ul>
+            </div>
 
-                <div class="p-6 bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-[12px]">
-                  <h3 class="text-body-strong text-[var(--color-text-primary)] mb-3 flex items-center gap-2">
-                    <svg class="w-5 h-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                  </svg>
+            <div class="border border-[var(--color-border)] rounded-[12px] p-8 bg-[var(--color-bg-primary)] relative overflow-hidden">
+              <div class="absolute top-0 left-0 w-1 h-full" style="background: linear-gradient(180deg, #F5A623 0%, #F5A623 100%);"></div>
+              <div class="flex items-center gap-3 mb-4">
+                <i class="ph-bold ph-warning text-[28px]" style="color: #F5A623;"></i>
+                <h3 class="text-[20px] font-semibold text-[var(--color-text-primary)]">
                   Consider Carefully
                 </h3>
-                  <ul class="text-body text-[var(--color-text-secondary)] space-y-2">
-                    <li>• Small team without DevOps</li>
-                    <li>• Rapidly changing product</li>
-                    <li>• Consumer-focused product</li>
-            </ul>
+              </div>
+              <ul class="space-y-2">
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Small team without DevOps</span>
+                </li>
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Rapidly changing product</span>
+                </li>
+                <li class="text-body text-[var(--color-text-secondary)] flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Consumer-focused product</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
