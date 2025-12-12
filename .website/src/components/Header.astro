@@ -10,8 +10,11 @@ const currentPath = Astro.url.pathname;
   <div class="header-inner">
     <nav class="navbar">
       <!-- Logo -->
-      <a href="/" class="navbar-logo">
-        <img src="/favicon.png" alt="BYOC" />
+      <a href="/" class="flex items-center gap-3">
+        <div class="navbar-logo">
+          <img src="/favicon.png" alt="BYOC" />
+        </div>
+        <span class="navbar-logo-text">awesomebyoc.com</span>
       </a>
 
       <!-- Center Navigation (absolutely positioned) -->
@@ -182,6 +185,14 @@ const currentPath = Astro.url.pathname;
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .navbar-logo-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    letter-spacing: -0.3px;
   }
 
   /* Center navigation */
