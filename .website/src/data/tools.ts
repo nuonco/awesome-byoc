@@ -30,32 +30,32 @@ export const categories: Record<Category, { label: string; description: string; 
   'databases': {
     label: 'Databases',
     description: 'BYOC database solutions',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>`,
+    icon: `<i class="ph-bold ph-database" style="color: #0070F3;"></i>`,
   },
   'streaming': {
     label: 'Streaming',
     description: 'Real-time data streaming platforms',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M22 12h-2"/><path d="M10 12h2"/><circle cx="12" cy="12" r="2"/></svg>`,
+    icon: `<i class="ph-bold ph-broadcast" style="color: #7928CA;"></i>`,
   },
   'monitoring': {
     label: 'Observability',
     description: 'Metrics, logs, and traces in your cloud',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>`,
+    icon: `<i class="ph-bold ph-chart-line" style="color: #FF0080;"></i>`,
   },
   'data-integration': {
     label: 'Data Integration',
     description: 'ETL and data movement tools',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/><line x1="9" y1="12" x2="15" y2="12"/><polyline points="12 9 15 12 12 15"/></svg>`,
+    icon: `<i class="ph-bold ph-arrows-merge" style="color: #50E3C2;"></i>`,
   },
   'dev-platforms': {
     label: 'Dev Platforms',
     description: 'Internal tools and platforms',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/></svg>`,
+    icon: `<i class="ph-bold ph-code" style="color: #F5A623;"></i>`,
   },
   'byoc-platforms': {
     label: 'BYOC Platforms',
     description: 'Platforms for deploying BYOC software',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>`,
+    icon: `<i class="ph-bold ph-cloud" style="color: #0070F3;"></i>`,
   },
 };
 
