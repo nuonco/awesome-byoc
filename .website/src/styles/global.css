@@ -160,6 +160,9 @@ html[data-theme="dark"] {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
   }
 
   body {
@@ -170,6 +173,9 @@ html[data-theme="dark"] {
     font-size: 14px;
     font-weight: 400;
     transition: background-color 0.2s ease, color 0.2s ease;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
   }
 
   /* Typography Scale (Inter) */
@@ -1052,6 +1058,13 @@ html[data-theme="dark"] {
   .hero-section {
     position: relative;
     background: var(--hero-bg);
+    min-height: 500px;
+  }
+  
+  @media (max-width: 768px) {
+    .hero-section {
+      min-height: 400px;
+    }
   }
 
   .hero-line {
@@ -1075,10 +1088,22 @@ html[data-theme="dark"] {
   }
 
   .hero-content {
-    max-width: 600px;
+    max-width: 900px;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
-    padding: 0 20px;
+    padding: 0 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  @media (max-width: 768px) {
+    .hero-content {
+      padding: 0 24px;
+      max-width: 100%;
+    }
   }
 
   /* Title */
@@ -1088,8 +1113,41 @@ html[data-theme="dark"] {
     font-weight: 500;
     line-height: 1.2;
     letter-spacing: -0.01em;
-    color: var(--hero-text-primary);
     margin-bottom: 20px;
+    white-space: nowrap;
+    color: var(--hero-text-primary);
+    background: linear-gradient(
+      90deg,
+      var(--hero-text-primary) 0%,
+      var(--hero-text-primary) 40%,
+      #4CC9F0 48%,
+      #F72585 52%,
+      var(--hero-text-primary) 60%,
+      var(--hero-text-primary) 100%
+    );
+    background-size: 300% 100%;
+    background-position: 0% center;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 2.5s ease-in-out 1s 1 forwards;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: 100% center;
+    }
+    100% {
+      background-position: 0% center;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .hero-title {
+      white-space: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
   }
 
   @media (min-width: 768px) {
@@ -1105,6 +1163,9 @@ html[data-theme="dark"] {
     line-height: 1.7;
     color: var(--hero-text-secondary);
     margin-bottom: 36px;
+    max-width: 600px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   @media (min-width: 768px) {

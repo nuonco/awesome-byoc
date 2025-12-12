@@ -27,18 +27,19 @@ const categoryList = Object.entries(categories) as [Category, { label: string; d
       <!-- Hero Section -->
       <section class="hero-section relative overflow-hidden">
         <!-- Hero Overlay -->
-        <div class="absolute inset-0 left-[120px] right-[120px] pointer-events-none">
+        <div class="absolute inset-0 left-[20px] right-[20px] md:left-[40px] md:right-[40px] lg:left-[120px] lg:right-[120px] pointer-events-none overflow-hidden">
           <img
             src="/hero-overlay.png"
             alt=""
             class="w-full h-full object-cover"
+            style="object-position: center center;"
           />
         </div>
 
         <div class="hero-inner relative z-10">
           <div class="hero-content">
             <!-- Headline -->
-            <h1 class="hero-title" style="white-space: nowrap;">
+            <h1 class="hero-title">
               Bring Your Own Cloud
             </h1>
 
@@ -128,9 +129,6 @@ const categoryList = Object.entries(categories) as [Category, { label: string; d
                 <div class="category-header">
                   <div class="category-icon" set:html={categoryInfo.icon} />
                   <h3 class="category-name">{categoryInfo.label}</h3>
-                  <span class="category-count" data-count={categoryTools.length}>
-                    {categoryTools.length}
-                  </span>
                 </div>
                 <div class="category-grid">
                   {categoryTools.map((tool) => (
@@ -262,11 +260,6 @@ const categoryList = Object.entries(categories) as [Category, { label: string; d
           (section as HTMLElement).classList.add('category-hidden');
         } else {
           (section as HTMLElement).classList.remove('category-hidden');
-        }
-
-        const countEl = section.querySelector('.category-count');
-        if (countEl) {
-          countEl.textContent = categoryVisible.toString();
         }
       });
 
