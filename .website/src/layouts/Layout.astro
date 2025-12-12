@@ -83,6 +83,18 @@ const { title, description = "Discover the best BYOC (Bring Your Own Cloud) tool
             moonIcon.classList.remove('hidden');
           }
         }
+        
+        // Update Nuon logos
+        const lightLogos = document.querySelectorAll('.nuon-logo-light');
+        const darkLogos = document.querySelectorAll('.nuon-logo-dark');
+        
+        if (theme === 'dark') {
+          lightLogos.forEach(logo => (logo as HTMLElement).style.display = 'none');
+          darkLogos.forEach(logo => (logo as HTMLElement).style.display = 'inline-block');
+        } else {
+          lightLogos.forEach(logo => (logo as HTMLElement).style.display = 'inline-block');
+          darkLogos.forEach(logo => (logo as HTMLElement).style.display = 'none');
+        }
       }
 
       function setTheme(theme: string, playSound: boolean = false): void {
