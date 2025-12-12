@@ -339,7 +339,7 @@ html[data-theme="dark"] {
     margin-right: auto;
     padding-left: 2rem;
     padding-right: 2rem;
-    overflow: hidden;
+    overflow: visible;
   }
 
   @media (max-width: 1200px) {
@@ -616,7 +616,7 @@ html[data-theme="dark"] {
     background: var(--color-bg-primary);
     border: 1px solid var(--color-border);
     border-radius: 12px;
-    overflow: hidden;
+    overflow: visible;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
     height: 380px;
@@ -625,7 +625,7 @@ html[data-theme="dark"] {
 
   .showcase-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(141, 176, 251, 0.5);
+    border-color: #09E7FB;
   }
 
   html[data-theme="light"] .showcase-card:hover {
@@ -646,6 +646,7 @@ html[data-theme="dark"] {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 12px 12px 0 0;
   }
 
   html[data-theme="dark"] .showcase-card-image {
@@ -720,6 +721,8 @@ html[data-theme="dark"] {
     flex-direction: column;
     gap: 12px;
     flex: 1;
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
   }
 
   .showcase-card-title {
@@ -733,11 +736,11 @@ html[data-theme="dark"] {
   }
 
   .showcase-card:hover .showcase-card-title {
-    color: #1e50c0;
+    color: #0895A8;
   }
 
   html[data-theme="dark"] .showcase-card:hover .showcase-card-title {
-    color: #8db0fb;
+    color: #09E7FB;
   }
 
   .showcase-card-description {
@@ -759,7 +762,7 @@ html[data-theme="dark"] {
   .category-section {
     margin-bottom: 5rem;
     max-width: 100%;
-    overflow: hidden;
+    overflow: visible;
   }
 
   @media (max-width: 768px) {
@@ -770,7 +773,7 @@ html[data-theme="dark"] {
   
   #categories-container {
     max-width: 100%;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .category-header {
@@ -821,6 +824,8 @@ html[data-theme="dark"] {
     grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
     gap: 32px;
     width: 100%;
+    padding: 8px;
+    margin: -8px;
   }
 
   @media (max-width: 1200px) {
