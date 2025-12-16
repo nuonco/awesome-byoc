@@ -1,0 +1,34 @@
+---
+import type { Category } from '../data/tools';
+import { categories, getToolsByCategory } from '../data/tools';
+
+interface Props {
+  category: Category;
+}
+
+const { category } = Astro.props;
+const categoryInfo = categories[category];
+const toolCount = getToolsByCategory(category).length;
+---
+
+<a
+  href={`/categories/${category}`}
+  class="card group block p-6 hover:border-[var(--color-accent-300)]"
+>
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-lg bg-[var(--color-accent-50)] text-[var(--color-accent-600)] flex items-center justify-center shrink-0 group-hover:bg-[var(--color-accent-100)] transition-colors">
+      <Fragment set:html={categoryInfo.icon} />
+    </div>
+    <div class="flex-1 min-w-0">
+      <h3 class="font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-600)] transition-colors mb-1">
+        {categoryInfo.label}
+      </h3>
+      <p class="text-sm text-[var(--color-text-secondary)] mb-2">
+        {categoryInfo.description}
+      </p>
+      <span class="text-xs text-[var(--color-text-muted)]">
+        {toolCount} {toolCount === 1 ? 'tool' : 'tools'}
+      </span>
+    </div>
+  </div>
+</a>

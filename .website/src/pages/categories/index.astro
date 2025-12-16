@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import CategoryCard from '../../components/CategoryCard.astro';
+import { categories, type Category } from '../../data/tools';
+
+const categoryList = Object.keys(categories) as Category[];
+---
+
+<Layout title="Categories">
+  <Header />
+
+  <main class="flex-1 bg-[var(--color-slate-50)]">
+    <div class="container py-8 md:py-12">
+      <!-- Page Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-3xl md:text-4xl font-bold text-[var(--color-text-primary)] mb-4">
+          Browse by Category
+        </h1>
+        <p class="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+          Explore {categoryList.length} categories of BYOC tools to find the perfect fit for your infrastructure needs.
+        </p>
+      </div>
+
+      <!-- Categories Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {categoryList.map((category) => (
+          <CategoryCard category={category} />
+        ))}
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

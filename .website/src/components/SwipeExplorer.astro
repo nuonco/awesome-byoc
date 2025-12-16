@@ -1,0 +1,372 @@
+---
+import { exampleCompanies } from '../data/exampleCompanies';
+import SwipeCard from './SwipeCard.astro';
+
+const companies = exampleCompanies;
+---
+
+<div class="swipe-explorer" id="swipe-explorer">
+  <div class="text-center mb-8">
+    <h2 class="text-2xl md:text-3xl font-bold text-[var(--color-text-primary)] mb-2">
+      Just exploring?
+    </h2>
+    <p class="text-[var(--color-text-secondary)]">
+      Swipe through real BYOC examples. Save the ones you like.
+    </p>
+  </div>
+
+  <div class="swipe-container" id="swipe-container">
+    <!-- Stack background cards -->
+    <div class="swipe-card-stack swipe-card-stack-2"></div>
+    <div class="swipe-card-stack swipe-card-stack-1"></div>
+
+    <!-- Cards will be rendered here dynamically -->
+    <div id="cards-container">
+      {companies.slice(0, 3).map((company, index) => (
+        <SwipeCard company={company} index={index} />
+      ))}
+    </div>
+
+    <!-- Empty state -->
+    <div class="swipe-empty" id="swipe-empty" style="display: none;">
+      <svg class="swipe-empty-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <h3 class="swipe-empty-title">You've seen them all!</h3>
+      <p class="swipe-empty-text">Check out your saved examples below.</p>
+    </div>
+  </div>
+
+  <!-- Desktop action buttons -->
+  <div class="swipe-actions" id="swipe-actions">
+    <button class="swipe-action-btn swipe-action-skip" id="btn-skip" aria-label="Skip">
+      <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <button class="swipe-action-btn swipe-action-save" id="btn-save" aria-label="Save">
+      <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Progress indicator -->
+  <div class="swipe-progress" id="swipe-progress">
+    {companies.map((_, index) => (
+      <div class={`swipe-progress-dot ${index === 0 ? 'current' : ''}`} data-index={index}></div>
+    ))}
+  </div>
+
+  <!-- CTA Button -->
+  <div class="mt-8 text-center">
+    <a href="/tools" class="btn btn-primary" id="explore-btn">
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+      <span id="explore-btn-text">Explore Tools</span>
+    </a>
+  </div>
+</div>
+
+<!-- Feedback elements (rendered at body level via JS) -->
+<template id="feedback-template">
+  <div class="swipe-feedback"></div>
+</template>
+
+<!-- Company data for JS -->
+<script define:vars={{ companies }}>
+  window.BYOC_COMPANIES = companies;
+</script>
+
+<script>
+  interface Company {
+    id: string;
+    name: string;
+    description: string;
+    category: string;
+    link: string;
+    logo: string;
+    gradientFrom: string;
+    gradientTo: string;
+  }
+
+  class SwipeExplorer {
+    private container: HTMLElement;
+    private cardsContainer: HTMLElement;
+    private companies: Company[];
+    private currentIndex: number = 0;
+    private savedCompanies: string[] = [];
+    private skippedCompanies: string[] = [];
+    private isDragging: boolean = false;
+    private startX: number = 0;
+    private startY: number = 0;
+    private currentX: number = 0;
+    private currentCard: HTMLElement | null = null;
+    private threshold: number = 100;
+
+    constructor() {
+      this.container = document.getElementById('swipe-container')!;
+      this.cardsContainer = document.getElementById('cards-container')!;
+      this.companies = (window as any).BYOC_COMPANIES || [];
+
+      // Load saved state from localStorage
+      this.loadState();
+
+      this.init();
+    }
+
+    private loadState(): void {
+      const saved = localStorage.getItem('byoc-saved');
+      const skipped = localStorage.getItem('byoc-skipped');
+      const index = localStorage.getItem('byoc-index');
+
+      if (saved) this.savedCompanies = JSON.parse(saved);
+      if (skipped) this.skippedCompanies = JSON.parse(skipped);
+      if (index) this.currentIndex = parseInt(index, 10);
+
+      this.updateButton();
+      this.updateProgress();
+    }
+
+    private saveState(): void {
+      localStorage.setItem('byoc-saved', JSON.stringify(this.savedCompanies));
+      localStorage.setItem('byoc-skipped', JSON.stringify(this.skippedCompanies));
+      localStorage.setItem('byoc-index', String(this.currentIndex));
+    }
+
+    private init(): void {
+      // Render initial cards
+      this.renderCards();
+
+      // Bind desktop button events
+      document.getElementById('btn-skip')?.addEventListener('click', () => this.handleAction('skip'));
+      document.getElementById('btn-save')?.addEventListener('click', () => this.handleAction('save'));
+
+      // Bind touch/mouse events on container
+      this.container.addEventListener('mousedown', this.onDragStart.bind(this));
+      this.container.addEventListener('touchstart', this.onDragStart.bind(this), { passive: false });
+
+      document.addEventListener('mousemove', this.onDragMove.bind(this));
+      document.addEventListener('touchmove', this.onDragMove.bind(this), { passive: false });
+
+      document.addEventListener('mouseup', this.onDragEnd.bind(this));
+      document.addEventListener('touchend', this.onDragEnd.bind(this));
+    }
+
+    private renderCards(): void {
+      this.cardsContainer.innerHTML = '';
+
+      // Show up to 3 cards
+      const visibleCompanies = this.companies.slice(this.currentIndex, this.currentIndex + 3);
+
+      if (visibleCompanies.length === 0) {
+        document.getElementById('swipe-empty')!.style.display = 'flex';
+        document.getElementById('swipe-actions')!.style.display = 'none';
+        document.querySelectorAll('.swipe-card-stack').forEach(el => {
+          (el as HTMLElement).style.display = 'none';
+        });
+        return;
+      }
+
+      visibleCompanies.forEach((company, index) => {
+        const card = this.createCard(company, index);
+        this.cardsContainer.appendChild(card);
+      });
+
+      this.updateProgress();
+    }
+
+    private createCard(company: Company, index: number): HTMLElement {
+      const card = document.createElement('div');
+      card.className = 'swipe-card';
+      card.dataset.companyId = company.id;
+      card.dataset.index = String(index);
+      card.style.zIndex = String(100 - index);
+
+      card.innerHTML = `
+        <div class="swipe-card-bg" style="background: linear-gradient(135deg, ${company.gradientFrom} 0%, ${company.gradientTo} 100%);"></div>
+        <div class="swipe-card-content">
+          <div class="swipe-card-logo">
+            <img src="${company.logo}" alt="${company.name} logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <span class="swipe-card-logo-fallback" style="display: none;">${company.name.substring(0, 2).toUpperCase()}</span>
+          </div>
+          <div class="swipe-card-info">
+            <h3 class="swipe-card-name">${company.name}</h3>
+            <span class="swipe-card-category">${company.category}</span>
+            <p class="swipe-card-description">${company.description}</p>
+            <a href="${company.link}" target="_blank" rel="noopener noreferrer" class="swipe-card-cta" onclick="event.stopPropagation();">
+              Read the blog post
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="swipe-indicator swipe-indicator-save">Save</div>
+        <div class="swipe-indicator swipe-indicator-skip">Skip</div>
+      `;
+
+      return card;
+    }
+
+    private onDragStart(e: MouseEvent | TouchEvent): void {
+      const card = this.cardsContainer.querySelector('.swipe-card') as HTMLElement;
+      if (!card) return;
+
+      this.isDragging = true;
+      this.currentCard = card;
+
+      const point = 'touches' in e ? e.touches[0] : e;
+      this.startX = point.clientX;
+      this.startY = point.clientY;
+      this.currentX = 0;
+
+      card.style.transition = 'none';
+    }
+
+    private onDragMove(e: MouseEvent | TouchEvent): void {
+      if (!this.isDragging || !this.currentCard) return;
+
+      const point = 'touches' in e ? e.touches[0] : e;
+      this.currentX = point.clientX - this.startX;
+      const currentY = point.clientY - this.startY;
+
+      // Prevent scrolling while swiping horizontally
+      if (Math.abs(this.currentX) > Math.abs(currentY)) {
+        e.preventDefault();
+      }
+
+      const rotation = this.currentX * 0.1;
+      this.currentCard.style.transform = `translateX(${this.currentX}px) rotate(${rotation}deg)`;
+
+      // Show indicators
+      const saveIndicator = this.currentCard.querySelector('.swipe-indicator-save') as HTMLElement;
+      const skipIndicator = this.currentCard.querySelector('.swipe-indicator-skip') as HTMLElement;
+
+      if (this.currentX > 50) {
+        saveIndicator.style.opacity = String(Math.min((this.currentX - 50) / 50, 1));
+        skipIndicator.style.opacity = '0';
+      } else if (this.currentX < -50) {
+        skipIndicator.style.opacity = String(Math.min((Math.abs(this.currentX) - 50) / 50, 1));
+        saveIndicator.style.opacity = '0';
+      } else {
+        saveIndicator.style.opacity = '0';
+        skipIndicator.style.opacity = '0';
+      }
+    }
+
+    private onDragEnd(): void {
+      if (!this.isDragging || !this.currentCard) return;
+
+      this.isDragging = false;
+      this.currentCard.style.transition = 'transform 0.3s ease';
+
+      if (this.currentX > this.threshold) {
+        this.animateOut('save');
+      } else if (this.currentX < -this.threshold) {
+        this.animateOut('skip');
+      } else {
+        // Reset position
+        this.currentCard.style.transform = '';
+        const saveIndicator = this.currentCard.querySelector('.swipe-indicator-save') as HTMLElement;
+        const skipIndicator = this.currentCard.querySelector('.swipe-indicator-skip') as HTMLElement;
+        saveIndicator.style.opacity = '0';
+        skipIndicator.style.opacity = '0';
+      }
+
+      this.currentCard = null;
+    }
+
+    private animateOut(action: 'save' | 'skip'): void {
+      if (!this.currentCard) return;
+
+      const card = this.currentCard;
+      const direction = action === 'save' ? 1 : -1;
+
+      card.style.transition = 'transform 0.4s ease, opacity 0.4s ease';
+      card.style.transform = `translateX(${direction * 500}px) rotate(${direction * 30}deg)`;
+      card.style.opacity = '0';
+
+      setTimeout(() => {
+        this.handleAction(action);
+      }, 300);
+    }
+
+    private handleAction(action: 'save' | 'skip'): void {
+      const company = this.companies[this.currentIndex];
+      if (!company) return;
+
+      if (action === 'save') {
+        this.savedCompanies.push(company.id);
+        this.showFeedback('saved');
+      } else {
+        this.skippedCompanies.push(company.id);
+        this.showFeedback('skipped');
+      }
+
+      this.currentIndex++;
+      this.saveState();
+      this.updateButton();
+      this.renderCards();
+    }
+
+    private showFeedback(type: 'saved' | 'skipped'): void {
+      const feedback = document.createElement('div');
+      feedback.className = `swipe-feedback swipe-feedback-${type}`;
+      feedback.textContent = type === 'saved' ? 'Saved!' : 'Skipped';
+      document.body.appendChild(feedback);
+
+      setTimeout(() => {
+        feedback.remove();
+      }, 700);
+    }
+
+    private updateButton(): void {
+      const btnText = document.getElementById('explore-btn-text');
+      const btn = document.getElementById('explore-btn') as HTMLAnchorElement;
+
+      if (this.savedCompanies.length > 0) {
+        btnText!.textContent = `See saved examples (${this.savedCompanies.length})`;
+        btn.href = '/tools?filter=saved';
+      } else {
+        btnText!.textContent = 'Explore Tools';
+        btn.href = '/tools';
+      }
+    }
+
+    private updateProgress(): void {
+      const dots = document.querySelectorAll('.swipe-progress-dot');
+      dots.forEach((dot, index) => {
+        dot.classList.remove('current', 'saved', 'skipped');
+        if (index < this.currentIndex) {
+          const companyId = this.companies[index]?.id;
+          if (this.savedCompanies.includes(companyId)) {
+            dot.classList.add('saved');
+          } else {
+            dot.classList.add('skipped');
+          }
+        } else if (index === this.currentIndex) {
+          dot.classList.add('current');
+        }
+      });
+    }
+  }
+
+  // Initialize when DOM is ready
+  document.addEventListener('DOMContentLoaded', () => {
+    new SwipeExplorer();
+  });
+
+  // Also initialize immediately if DOM is already ready
+  if (document.readyState !== 'loading') {
+    new SwipeExplorer();
+  }
+</script>
+
+<style>
+  .swipe-explorer {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+</style>
