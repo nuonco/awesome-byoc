@@ -1,6 +1,6 @@
 ---
 name: Replicated
-description: Managed BYOC platform for vendors to manage the lifecycle of installing on a customer's cloud
+description: Commercial Software Distribution Platform
 homepage: https://www.replicated.com/
 docs: https://docs.replicated.com/
 category: byoc-platforms
