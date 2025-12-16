@@ -18,12 +18,13 @@ The tool must:
 name: Tool Name
 description: What it does
 homepage: https://example.com/marketingsite
-docs: https://example.com/docs
-category: see example categories below
+github: https://github.com/org/repo  # optional
+docs: https://example.com/byoc-docs
+category: databases  # or streaming, observability, data-integration, dev-platforms
 tags:
   - relevant-tags
 license: open-source  # or commercial, hybrid
-logo: /logos/{logo filename}
+logo: /logos/{filename}
 cloudSupport:
   - aws
   - gcp
