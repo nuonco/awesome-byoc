@@ -75,17 +75,17 @@ const categoryList = Object.entries(categories) as [Category, { label: string; d
       <div class="container">
         <!-- Section header with search -->
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
-          <div>
-            <h2 class="text-[48px] font-normal leading-normal tracking-[0.8px] text-[var(--color-text-primary)] mb-3" style="font-family: 'JetBrains Mono', monospace;">
+          <div class="min-w-0 flex-1">
+            <h2 class="text-[32px] md:text-[48px] font-normal leading-tight tracking-[0.8px] text-[var(--color-text-primary)] mb-3" style="font-family: 'JetBrains Mono', monospace;">
               All Products
             </h2>
-            <p class="text-[18px] leading-[27px] tracking-[-0.2px] text-[var(--color-text-secondary)]">
+            <p class="text-[16px] md:text-[18px] leading-[27px] tracking-[-0.2px] text-[var(--color-text-secondary)]">
               {tools.length} tools across {categoryList.length} categories
             </p>
           </div>
 
           <!-- Search -->
-          <div class="search-container w-full md:w-96">
+          <div class="search-container w-full md:w-auto md:min-w-[280px] md:max-w-[320px] shrink">
             <svg class="search-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
