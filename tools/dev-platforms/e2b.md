@@ -11,6 +11,7 @@ tags:
   - code-execution
   - runtime
 license: open-source
+logo: /logos/e2b.svg
 cloudSupport:
   - aws
   - gcp
