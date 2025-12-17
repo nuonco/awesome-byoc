@@ -39,6 +39,12 @@
 - [Snowflake Openflow](https://www.snowflake.com/en/blog/openflow-byoc-data-integration/) - BYOC data integration that moves data into Snowflake while keeping compute in your environment.
 - [Estuary](https://docs.estuary.dev/private-byoc/byoc-deployments/) - Real-time ETL platform with CDC capabilities for streaming data integration. ([Source Code](https://github.com/estuary/flow))
 
+### Dev Platforms
+
+- [Okteto](https://www.okteto.com/) - Remote Development Environments for Humans and Agents.
+- [turbopuffer](https://turbopuffer.com/docs/architecture) - Serverless {vector, full-text} search built from first principles on object storage.
+
+
 ### BYOC Platforms
 
 - [Nuon](https://docs.nuon.co/get-started/introduction) - Control Plane and Runner driven BYOC platform for deploying software to customer cloud environments and on-premises infrastructure.
