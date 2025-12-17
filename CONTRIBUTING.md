@@ -32,7 +32,8 @@ cloudSupport:
 ```
 
 2. Add an entry to README.md in the appropriate section
-3. Submit a PR
+3. Add your logo file to .website/public/logos/
+4. Submit a PR
 
 ## Categories
 
