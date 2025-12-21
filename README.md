@@ -36,6 +36,7 @@
 
 ### Data Integration
 
+- [AnswerLayer](https://getanswerlayer.com) - Generative semantic layer for natural language analytics on sensitive data.
 - [Snowflake Openflow](https://www.snowflake.com/en/blog/openflow-byoc-data-integration/) - BYOC data integration that moves data into Snowflake while keeping compute in your environment.
 - [Estuary](https://docs.estuary.dev/private-byoc/byoc-deployments/) - Real-time ETL platform with CDC capabilities for streaming data integration. ([Source Code](https://github.com/estuary/flow))
 
