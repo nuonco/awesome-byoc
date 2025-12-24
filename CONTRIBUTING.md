@@ -23,7 +23,7 @@ docs: https://example.com/byoc-docs
 category: databases  # or streaming, observability, data-integration, dev-platforms
 tags:
   - relevant-tags
-license: open-source  # or commercial, hybrid
+license: open-source  # or commercial, hybrid, proprietary
 logo: /logos/{filename}
 cloudSupport:
   - aws
