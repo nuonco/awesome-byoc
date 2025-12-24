@@ -19,7 +19,7 @@ const toolsCollection = defineCollection({
       'byoc-platforms',
     ]),
     tags: z.array(z.string()),
-    license: z.enum(['open-source', 'commercial', 'hybrid']),
+    license: z.enum(['open-source', 'commercial', 'hybrid', 'proprietary']),
     language: z.string().optional(),
     cloudSupport: z.array(z.enum(['aws', 'gcp', 'azure', 'on-prem', 'any'])),
     stars: z.number().optional(),
