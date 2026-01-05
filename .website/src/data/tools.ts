@@ -23,6 +23,7 @@ export type Category =
   | 'streaming'
   | 'monitoring'
   | 'data-integration'
+  | 'storage'
   | 'dev-platforms'
   | 'byoc-platforms';
 
@@ -46,6 +47,11 @@ export const categories: Record<Category, { label: string; description: string; 
     label: 'Data Integration',
     description: 'ETL and data movement tools',
     icon: `<i class="ph-bold ph-arrows-merge" style="color: #00ED20;"></i>`,
+  },
+  'storage': {
+    label: 'Storage',
+    description: 'Object storage and file systems',
+    icon: `<i class="ph-bold ph-hard-drives" style="color: #7B61FF;"></i>`,
   },
   'dev-platforms': {
     label: 'Dev Platforms',

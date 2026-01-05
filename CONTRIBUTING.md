@@ -42,6 +42,7 @@ cloudSupport:
 - `streaming/`
 - `observability/`
 - `data-integration/`
+- `storage/`
 - `dev-platforms/`
 - `byoc-platforms/`
 
