@@ -760,9 +760,8 @@ html[data-theme="dark"] {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    height: 48px;
-    min-height: 42px;
-    max-height: 42px;
+    min-height: 48px;
+    max-height: 48px;
   }
 
   /* Category section */
