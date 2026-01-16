@@ -52,6 +52,7 @@
 
 ### BYOC Platforms
 
+- [Distr](https://distr.sh/) - Open Source Distribution Platform for BYOC, on-prem and self-managed deployments. ([Source Code](https://github.com/distr-sh/distr))
 - [Nuon](https://docs.nuon.co/get-started/introduction) - Control Plane and Runner driven BYOC platform for deploying software to customer cloud environments and on-premises infrastructure.
 - [Replicated](https://www.replicated.com/) - Managed BYOC platform for vendors to manage the lifecycle of installing on a customer's cloud.
 
