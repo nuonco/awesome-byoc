@@ -11,6 +11,7 @@
 - [BYOC Tools](#byoc-tools)
 - [What is BYOC?](#what-is-byoc)
 - [Contributing](#contributing)
+- [License](#license)
 
 ## BYOC Tools
 
@@ -47,7 +48,6 @@
 ### Dev Platforms
 
 - [Okteto](https://www.okteto.com/) - Remote Development Environments for Humans and Agents.
-- [turbopuffer](https://turbopuffer.com/docs/architecture) - Serverless {vector, full-text} search built from first principles on object storage.
 
 
 ### BYOC Platforms
@@ -78,9 +78,3 @@
 ## Contributing
 
 Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add a tool.
-
-## License
-
-[![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-To the extent possible under law, [Nuon](https://nuon.co) has waived all copyright and related or neighboring rights to this work.
