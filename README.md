@@ -56,7 +56,7 @@
 - [Okteto](https://www.okteto.com/) - Remote Development Environments for Humans and Agents.
 
 
-### BYOC Platforms
+### Bring Your Own Cloud Platforms
 
 - [Distr](https://distr.sh/) - Open Source Distribution Platform for BYOC, on-prem and self-managed deployments. ([Source Code](https://github.com/distr-sh/distr))
 - [Nuon](https://docs.nuon.co/get-started/introduction) - Control Plane and Runner driven BYOC platform for deploying software to customer cloud environments and on-premises infrastructure.
