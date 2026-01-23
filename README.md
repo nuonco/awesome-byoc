@@ -6,6 +6,15 @@
 
 **[View the website](https://www.awesomebyoc.com)**
 
+**Common Patterns**
+
+| Pattern | Description |
+|---------|-------------|
+| Control Plane / Data Plane | Vendor hosts management UI, your cloud runs the workloads. |
+| Agent-Based | Lightweight agent in your environment connects outbound to vendor services. |
+| Full Self-Hosted | Everything runs in your environment, supporting air-gapped deployments. |
+
+
 ## Contents
 
 - [BYOC Tools](#byoc-tools)
@@ -52,14 +61,6 @@
 - [Distr](https://distr.sh/) - Open Source Distribution Platform for BYOC, on-prem and self-managed deployments. ([Source Code](https://github.com/distr-sh/distr))
 - [Nuon](https://docs.nuon.co/get-started/introduction) - Control Plane and Runner driven BYOC platform for deploying software to customer cloud environments and on-premises infrastructure.
 - [Replicated](https://www.replicated.com/) - Managed BYOC platform for vendors to manage the lifecycle of installing on a customer's cloud.
-
-### Common Patterns
-
-| Pattern | Description |
-|---------|-------------|
-| Control Plane / Data Plane | Vendor hosts management UI, your cloud runs the workloads. |
-| Agent-Based | Lightweight agent in your environment connects outbound to vendor services. |
-| Full Self-Hosted | Everything runs in your environment, supporting air-gapped deployments. |
 
 ## Contributing
 
