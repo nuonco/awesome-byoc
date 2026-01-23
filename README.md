@@ -9,7 +9,6 @@
 ## Contents
 
 - [BYOC Tools](#byoc-tools)
-- [What is BYOC?](#what-is-byoc)
 - [Contributing](#contributing)
 
 ## BYOC Tools
