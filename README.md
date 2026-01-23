@@ -11,7 +11,6 @@
 - [BYOC Tools](#byoc-tools)
 - [What is BYOC?](#what-is-byoc)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## BYOC Tools
 
@@ -55,17 +54,6 @@
 - [Distr](https://distr.sh/) - Open Source Distribution Platform for BYOC, on-prem and self-managed deployments. ([Source Code](https://github.com/distr-sh/distr))
 - [Nuon](https://docs.nuon.co/get-started/introduction) - Control Plane and Runner driven BYOC platform for deploying software to customer cloud environments and on-premises infrastructure.
 - [Replicated](https://www.replicated.com/) - Managed BYOC platform for vendors to manage the lifecycle of installing on a customer's cloud.
-
-## What is BYOC?
-
-**Bring Your Own Cloud (BYOC)** is a deployment model where software runs in your own cloud infrastructure rather than in a vendor's shared environment.
-
-### Benefits
-
-- **Data Sovereignty** — Your data never leaves your cloud account, simplifying compliance.
-- **Compliance** — Meet SOC 2, HIPAA, GDPR, and FedRAMP requirements more easily.
-- **No Vendor Lock-in** — Maintain control over your infrastructure and data.
-- **Cost Transparency** — Infrastructure costs appear on your cloud bill for clear budgeting.
 
 ### Common Patterns
 
