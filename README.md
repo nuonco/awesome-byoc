@@ -1,4 +1,4 @@
-[<img src="awesomebyoc.png" align="right" width="65">](https://awesomebyoc.com/)                                     
+<img src="awesomebyoc.png" align="right" width="65">                                     
                                                                                                                         
 # Awesome BYOC [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)                                         
                                                                                                                         
@@ -66,8 +66,8 @@
 
 **Common Patterns**
 
-| Pattern | Description |
-|---------|-------------|
+| Pattern                    | Description                                                   |
+|----------------------------|---------------------------------------------------------------|
 | Control Plane / Data Plane | Vendor hosts management UI, your cloud runs the workloads. |
 | Agent-Based | Lightweight agent in your environment connects outbound to vendor services. |
 | Full Self-Hosted | Everything runs in your environment, supporting air-gapped deployments. |
