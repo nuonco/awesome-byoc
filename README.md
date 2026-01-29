@@ -67,10 +67,10 @@
 **Common Patterns**
 
 | Pattern                    | Description                                                                       |    
-  | -------------------------- | --------------------------------------------------------------------------------- |    
-  | Control Plane / Data Plane | Vendor hosts management UI, your cloud runs the workloads.                        |    
-  | Agent-Based                | Lightweight agent in your environment connects outbound to vendor services.       |    
-  | Full Self-Hosted           | Everything runs in your environment, supporting air-gapped deployments.           |
+| -------------------------- | --------------------------------------------------------------------------------- |    
+| Control Plane / Data Plane | Vendor hosts management UI, your cloud runs the workloads.                        |    
+| Agent-Based                | Lightweight agent in your environment connects outbound to vendor services.       |    
+| Full Self-Hosted           | Everything runs in your environment, supporting air-gapped deployments.           |
 
 
 ## Contributing
