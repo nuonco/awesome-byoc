@@ -1,8 +1,12 @@
-# Awesome BYOC [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-> A curated list of Bring Your Own Cloud (BYOC) tools and resources.
+[<img src="awesomebyoc.png" align="right" width="65">](https://awesomebyoc.com/)                                     
+                                                                                                                        
+# Awesome BYOC [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)                                         
+                                                                                                                        
+> A curated list of Bring Your Own Cloud (BYOC) tools and resources.         
 
 **BYOC (Bring Your Own Cloud)** is a deployment model where software runs in *a customer's* cloud account instead of a vendor's shared environment. This provides customer's data sovereignty, compliance control, cost transparency, and avoids vendor lock-in.
+
+<br clear="right"> 
 
 **[View the website](https://www.awesomebyoc.com)**
 
