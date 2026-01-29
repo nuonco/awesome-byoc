@@ -12,7 +12,13 @@
 
 ## Contents
 
-- [BYOC Tools](#byoc-tools)
+- [Databases](#databases)
+- [Streaming](#streaming)
+- [Observability](#observability)
+- [Data Integration](#data-integration)
+- [Storage](#storage)
+- [Dev Platforms](#dev-platforms)
+- [Bring Your Own Cloud Platforms](#bring-your-own-cloud-platforms)
 
 ## BYOC Tools
 
