@@ -1,0 +1,65 @@
+name: Check Links
+
+on:
+  # Run every day at 8:00 AM UTC (morning check)
+  schedule:
+    - cron: '0 8 * * *'
+
+  # Allow manual trigger for testing
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (do not create issues)'
+        required: false
+        default: 'false'
+        type: boolean
+
+  # Also run on PRs that modify tool files (for validation)
+  pull_request:
+    paths:
+      - 'tools/**/*.md'
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+
+    permissions:
+      issues: write
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Run link checker
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Determine if this is a dry run
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            # Always dry run on PRs (don't create issues)
+            python scripts/check_links.py --dry-run
+          elif [[ "${{ inputs.dry_run }}" == "true" ]]; then
+            python scripts/check_links.py --dry-run
+          else
+            python scripts/check_links.py
+          fi
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-check-results
+          path: |
+            *.log
+          retention-days: 7
+          if-no-files-found: ignore
