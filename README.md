@@ -48,6 +48,7 @@
 ### Dev Platforms
 
 - [Okteto](https://www.okteto.com/) - Remote Development Environments for Humans and Agents.
+- [Rivet](https://rivet.dev/) - Infrastructure for stateful AI agents with Actor-based runtime. ([Source Code](https://github.com/rivet-gg/rivet))
 - [turbopuffer](https://turbopuffer.com/docs/architecture) - Serverless {vector, full-text} search built from first principles on object storage.
 
 
