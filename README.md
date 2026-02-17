@@ -27,6 +27,7 @@
 
 - [Aiven](https://aiven.io/docs/platform/concepts/byoc) - Managed open source data infrastructure with BYOC deployment option for PostgreSQL, Kafka, and more.
 - [Chroma](https://www.trychroma.com/) - Fast, serverless search platform supporting vector, full-text, regex, and metadata search. ([Source Code](https://github.com/chroma-core/chroma))
+- [CockroachDB](https://www.cockroachlabs.com/product/cloud/bring-your-own-cloud/) - Distributed SQL database built for global scalability, strong consistency, and survivability. ([Source Code](https://github.com/cockroachdb/cockroach))
 - [ClickHouse](https://clickhouse.com/cloud/bring-your-own-cloud) - Real-time OLAP database for analytics with BYOC deployment. ([Source Code](https://github.com/ClickHouse/ClickHouse))
 - [LanceDB](https://lancedb.com/docs/enterprise/deployment/) - Vector database with BYOC enterprise deployment for high-performance AI workloads. ([Source Code](https://github.com/lancedb/lancedb))
 - [Pinecone](https://docs.pinecone.io/guides/production/bring-your-own-cloud) - Vector database purpose-built for AI applications requiring similarity search at scale.
@@ -56,7 +57,11 @@
 
 ### Dev Platforms
 
+- [Devin](https://devin.ai/) - Autonomous AI software engineer with enterprise BYOC deployment options.
+- [E2B](https://e2b.dev/enterprise) - Open source sandboxed cloud environments for AI-powered code execution and agents. ([Source Code](https://github.com/e2b-dev/E2B))
 - [Okteto](https://www.okteto.com/) - Remote Development Environments for Humans and Agents.
+- [Ona](https://ona.com) - Mission control for software projects and AI agents.
+- [Rivet](https://rivet.dev/) - Infrastructure for stateful AI agents with Actor-based runtime. ([Source Code](https://github.com/rivet-gg/rivet))
 
 
 ### Bring Your Own Cloud Platforms
