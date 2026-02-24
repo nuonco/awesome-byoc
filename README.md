@@ -19,6 +19,9 @@
   - [Data Integration](#data-integration)
   - [Storage](#storage)
   - [Dev Platforms](#dev-platforms)
+  - [Apps](#apps)
+  - [Internal Tools](#internal-tools)
+  - [AI](#ai)
   - [Bring Your Own Cloud Platforms](#bring-your-own-cloud-platforms)
 
 ## BYOC Tools
@@ -26,13 +29,23 @@
 ### Databases
 
 - [Aiven](https://aiven.io/docs/platform/concepts/byoc) - Managed open source data infrastructure with BYOC deployment option for PostgreSQL, Kafka, and more.
+- [Bonsai](https://bonsai.io/bring-your-own-cloud) - Managed Elasticsearch and OpenSearch deployed in your own cloud account.
+- [CelerData](https://docs.celerdata.com/byoc/) - Managed StarRocks analytics database deployed in your own cloud account.
 - [Chroma](https://www.trychroma.com/) - Fast, serverless search platform supporting vector, full-text, regex, and metadata search. ([Source Code](https://github.com/chroma-core/chroma))
-- [CockroachDB](https://www.cockroachlabs.com/product/cloud/bring-your-own-cloud/) - Distributed SQL database built for global scalability, strong consistency, and survivability. ([Source Code](https://github.com/cockroachdb/cockroach))
 - [ClickHouse](https://clickhouse.com/cloud/bring-your-own-cloud) - Real-time OLAP database for analytics with BYOC deployment. ([Source Code](https://github.com/ClickHouse/ClickHouse))
+- [CockroachDB](https://www.cockroachlabs.com/product/cloud/bring-your-own-cloud/) - Distributed SQL database built for global scalability, strong consistency, and survivability. ([Source Code](https://github.com/cockroachdb/cockroach))
+- [DragonflyDB](https://www.dragonflydb.io/docs/cloud/enterprise) - Redis-compatible in-memory database with managed BYOC enterprise deployment. ([Source Code](https://github.com/dragonflydb/dragonfly))
+- [Imply](https://imply.io/imply-enterprise-hybrid/) - Managed Apache Druid analytics database deployed in your own AWS VPC.
 - [LanceDB](https://lancedb.com/docs/enterprise/deployment/) - Vector database with BYOC enterprise deployment for high-performance AI workloads. ([Source Code](https://github.com/lancedb/lancedb))
 - [Pinecone](https://docs.pinecone.io/guides/production/bring-your-own-cloud) - Vector database purpose-built for AI applications requiring similarity search at scale.
+- [PlanetScale](https://planetscale.com/docs/plans/managed) - MySQL-compatible serverless database platform with managed BYOC deployment.
+- [Qdrant](https://qdrant.tech/hybrid-cloud/) - Vector database with Hybrid Cloud deployment on your own infrastructure. ([Source Code](https://github.com/qdrant/qdrant))
+- [Redis](https://redis.io/docs/latest/operate/rc/subscriptions/bring-your-own-cloud/) - Managed Redis in your own AWS account with full data plane control.
 - [SingleStore](https://www.singlestore.com/blog/singlestore-byoc-on-aws/) - Distributed SQL database optimized for real-time analytics and transactions in a single platform.
+- [TiDB](https://docs.pingcap.com/tidbcloud/byoc-overview) - Distributed SQL database with BYOC deployment into your own cloud account.
 - [turbopuffer](https://turbopuffer.com/docs/architecture) - Serverless {vector, full-text} search built from first principles on object storage.
+- [Weaviate](https://weaviate.io/deployment/byoc) - Open source vector database with enterprise BYOC deployment. ([Source Code](https://github.com/weaviate/weaviate))
+- [YugabyteDB](https://docs.yugabyte.com/preview/yugabyte-cloud/cloud-basics/byoc/) - Distributed PostgreSQL-compatible database with managed BYOC deployment.
 
 ### Streaming
 
@@ -41,15 +54,23 @@
 
 ### Observability
 
+- [Chronosphere](https://chronosphere.io) - Cloud-native observability platform with BYOC data plane for telemetry pipelines. ([Docs](https://docs.chronosphere.io/))
+- [Datadog](https://www.datadoghq.com) - BYOC log management with indexing and search running in your own Kubernetes cluster. ([Docs](https://docs.datadoghq.com/cloudprem/introduction/))
+- [Dynatrace](https://www.dynatrace.com) - Full-stack observability deployed and managed by Dynatrace in your own cloud. ([Docs](https://docs.dynatrace.com/managed))
 - [Grafana](https://grafana.com/products/bring-your-own-cloud-byoc/) - Open source analytics and visualization platform for metrics, logs, and traces. ([Source Code](https://github.com/grafana/grafana))
 - [Groundcover](https://www.groundcover.com/blog/why-byoc-is-the-future) - Cloud-native observability using eBPF for zero-instrumentation monitoring in Kubernetes.
 - [Honeycomb](https://www.honeycomb.io/blog/honeycomb-launches-new-private-cloud-offering-address-security-compliance-cost-concerns) - Observability platform for debugging distributed systems with high-cardinality data exploration.
+- [Last9](https://last9.io) - Managed Prometheus-compatible monitoring in your own cloud. ([Docs](https://last9.io/docs/))
+- [SigNoz](https://signoz.io) - Open source full-stack observability with vendor-managed BYOC deployment. ([Docs](https://signoz.io/docs))
 
 ### Data Integration
 
+- [Airbyte](https://airbyte.com) - Managed ELT connector platform with data plane running in your own cloud. ([Docs](https://docs.airbyte.com/platform/deploying-airbyte))
 - [AnswerLayer](https://getanswerlayer.com) - Generative semantic layer for natural language analytics on sensitive data.
-- [Snowflake Openflow](https://www.snowflake.com/en/blog/openflow-byoc-data-integration/) - BYOC data integration that moves data into Snowflake while keeping compute in your environment.
 - [Estuary](https://docs.estuary.dev/private-byoc/byoc-deployments/) - Real-time ETL platform with CDC capabilities for streaming data integration. ([Source Code](https://github.com/estuary/flow))
+- [Fivetran](https://www.fivetran.com) - Managed ELT pipelines with data-plane agent running in your own VPC. ([Docs](https://fivetran.com/docs/deployment-models/hybrid-deployment))
+- [Matillion](https://www.matillion.com) - Cloud ELT platform with customer-managed agents deployed in your own cloud VPC. ([Docs](https://docs.matillion.com/data-productivity-cloud/security/docs/deployment-options/))
+- [Snowflake Openflow](https://www.snowflake.com/en/blog/openflow-byoc-data-integration/) - BYOC data integration that moves data into Snowflake while keeping compute in your environment.
 
 ### Storage
 
@@ -57,11 +78,30 @@
 
 ### Dev Platforms
 
-- [Devin](https://devin.ai/) - Autonomous AI software engineer with enterprise BYOC deployment options.
 - [E2B](https://e2b.dev/enterprise) - Open source sandboxed cloud environments for AI-powered code execution and agents. ([Source Code](https://github.com/e2b-dev/E2B))
+- [LangChain](https://langchain.com) - Observability and evaluation platform for LLM applications. ([Docs](https://docs.langchain.com/langsmith/self-hosted))
 - [Okteto](https://www.okteto.com/) - Remote Development Environments for Humans and Agents.
 - [Ona](https://ona.com) - Mission control for software projects and AI agents.
 - [Rivet](https://rivet.dev/) - Infrastructure for stateful AI agents with Actor-based runtime. ([Source Code](https://github.com/rivet-gg/rivet))
+
+### Apps
+
+- [Glean](https://www.glean.com) - Enterprise Work AI search and assistant platform managed in your own cloud. ([Docs](https://docs.glean.com/get-started/build/about-self-hosted))
+- [Knovos](https://www.knovos.com/) - Legal information management and eDiscovery platform. ([Docs](https://www.knovos.com/company/byc/))
+
+### Internal Tools
+
+- [Retool](https://retool.com) - Low-code internal tool builder with vendor-managed deployment in your AWS VPC. ([Docs](https://docs.retool.com/self-hosted/retool-managed/concepts/architecture))
+- [Superblocks](https://www.superblocks.com) - Internal tools platform with vendor-managed data plane in your cloud VPC. ([Docs](https://docs.superblocks.com/enterprise/hybrid-architecture/overview))
+
+### AI
+
+- [Baseten](https://www.baseten.co) - ML model inference platform running in your VPC, managed by Baseten. ([Docs](https://www.baseten.co/deployments/baseten-self-hosted/))
+- [Braintrust](https://www.braintrust.dev) - LLM evals platform with data plane running in your own cloud VPC. ([Docs](https://www.braintrust.dev/docs/guides/self-hosting))
+- [Cohere](https://cohere.com) - Enterprise LLM platform with model containers deployed in your own cloud. ([Docs](https://docs.cohere.com/docs/private-deployment-overview))
+- [Devin](https://devin.ai/) - Autonomous AI software engineer with enterprise BYOC deployment options.
+- [Tabnine](https://www.tabnine.com) - AI code assistant deployed in your VPC with Tabnine managing setup and updates. ([Docs](https://docs.tabnine.com/main/administering-tabnine/private-installation))
+- [Together AI](https://www.together.ai) - LLM inference and fine-tuning platform deployed in your own VPC. ([Docs](https://docs.together.ai/docs/deployment-options))
 
 
 ### Bring Your Own Cloud Platforms

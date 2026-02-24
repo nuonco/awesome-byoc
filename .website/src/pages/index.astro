@@ -119,7 +119,7 @@ const categoryList = Object.entries(categories) as [Category, { label: string; d
         <!-- Tools by category -->
         <div id="categories-container">
           {categoryList.map(([categoryKey, categoryInfo]) => {
-            const categoryTools = getToolsByCategorySync(tools, categoryKey);
+            const categoryTools = getToolsByCategorySync(tools, categoryKey).sort((a, b) => a.name.localeCompare(b.name));
             if (categoryTools.length === 0) return null;
             return (
               <div

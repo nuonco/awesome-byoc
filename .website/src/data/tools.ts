@@ -25,43 +25,61 @@ export type Category =
   | 'data-integration'
   | 'storage'
   | 'dev-platforms'
-  | 'byoc-platforms';
+  | 'byoc-platforms'
+  | 'apps'
+  | 'ai'
+  | 'internal-tools';
 
 export const categories: Record<Category, { label: string; description: string; icon: string }> = {
-  'databases': {
-    label: 'Databases',
-    description: 'BYOC database solutions',
-    icon: `<i class="ph-bold ph-database" style="color: #4CC9F0;"></i>`,
+  'ai': {
+    label: 'AI',
+    description: 'AI and machine learning platforms',
+    icon: `<i class="ph-bold ph-brain" style="color: #9B5DE5;"></i>`,
   },
-  'streaming': {
-    label: 'Streaming',
-    description: 'Real-time data streaming platforms',
-    icon: `<i class="ph-bold ph-broadcast" style="color: #3A00FF;"></i>`,
+  'apps': {
+    label: 'Apps',
+    description: 'Business applications',
+    icon: `<i class="ph-bold ph-app-window" style="color: #00D9FF;"></i>`,
   },
-  'monitoring': {
-    label: 'Observability',
-    description: 'Metrics, logs, and traces in your cloud',
-    icon: `<i class="ph-bold ph-chart-line" style="color: #F72585;"></i>`,
+  'byoc-platforms': {
+    label: 'BYOC Platforms',
+    description: 'Platforms for deploying BYOC software',
+    icon: `<i class="ph-bold ph-cloud" style="color: #4CC9F0;"></i>`,
   },
   'data-integration': {
     label: 'Data Integration',
     description: 'ETL and data movement tools',
     icon: `<i class="ph-bold ph-arrows-merge" style="color: #00ED20;"></i>`,
   },
-  'storage': {
-    label: 'Storage',
-    description: 'Object storage and file systems',
-    icon: `<i class="ph-bold ph-hard-drives" style="color: #7B61FF;"></i>`,
+  'databases': {
+    label: 'Databases',
+    description: 'BYOC database solutions',
+    icon: `<i class="ph-bold ph-database" style="color: #4CC9F0;"></i>`,
   },
   'dev-platforms': {
     label: 'Dev Platforms',
     description: 'Internal tools and platforms',
     icon: `<i class="ph-bold ph-code" style="color: #F5A623;"></i>`,
   },
-  'byoc-platforms': {
-    label: 'BYOC Platforms',
-    description: 'Platforms for deploying BYOC software',
-    icon: `<i class="ph-bold ph-cloud" style="color: #4CC9F0;"></i>`,
+  'internal-tools': {
+    label: 'Internal Tools',
+    description: 'Low-code platforms for building internal apps',
+    icon: `<i class="ph-bold ph-wrench" style="color: #FF6B6B;"></i>`,
+  },
+  'monitoring': {
+    label: 'Observability',
+    description: 'Metrics, logs, and traces in your cloud',
+    icon: `<i class="ph-bold ph-chart-line" style="color: #F72585;"></i>`,
+  },
+  'storage': {
+    label: 'Storage',
+    description: 'Object storage and file systems',
+    icon: `<i class="ph-bold ph-hard-drives" style="color: #7B61FF;"></i>`,
+  },
+  'streaming': {
+    label: 'Streaming',
+    description: 'Real-time data streaming platforms',
+    icon: `<i class="ph-bold ph-broadcast" style="color: #3A00FF;"></i>`,
   },
 };
 
