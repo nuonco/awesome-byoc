@@ -69,6 +69,12 @@ const { title, description = "Discover the best Bring Your Own Cloud infra tools
   <body class="min-h-screen flex flex-col">
     <slot />
 
+    <!-- Vercel Web Analytics -->
+    <script>
+      import { inject } from '@vercel/analytics';
+      inject();
+    </script>
+
     <!-- Click sound audio element -->
     <audio id="click-sound" preload="auto">
       <source src="/click.mp3" type="audio/mpeg" />
