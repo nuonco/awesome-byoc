@@ -77,6 +77,7 @@
 
 - [E2B](https://e2b.dev/enterprise) - Open source sandboxed cloud environments for AI-powered code execution and agents. ([Source Code](https://github.com/e2b-dev/E2B))
 - [LangChain](https://langchain.com) - Observability and evaluation platform for LLM applications. ([Docs](https://docs.langchain.com/langsmith/self-hosted))
+- [Northflank](https://northflank.com/) - Dev platform for running databases, agents, GPU workloads, and jobs. ([Docs](https://northflank.com/docs))
 - [Okteto](https://www.okteto.com/) - Remote Development Environments for Humans and Agents.
 - [Ona](https://ona.com) - Mission control for software projects and AI agents.
 - [Rivet](https://rivet.dev/) - Infrastructure for stateful AI agents with Actor-based runtime. ([Source Code](https://github.com/rivet-gg/rivet))
