@@ -36,7 +36,7 @@
 - [CockroachDB](https://www.cockroachlabs.com/product/cloud/bring-your-own-cloud/) - Distributed SQL database built for global scalability, strong consistency, and survivability. ([Source Code](https://github.com/cockroachdb/cockroach))
 - [DragonflyDB](https://www.dragonflydb.io/docs/cloud/enterprise) - Redis-compatible in-memory database with managed BYOC enterprise deployment. ([Source Code](https://github.com/dragonflydb/dragonfly))
 - [Imply](https://imply.io/imply-enterprise-hybrid/) - Managed Apache Druid analytics database deployed in your own AWS VPC.
-- [LanceDB](https://lancedb.com/docs/enterprise/deployment/) - Vector database with BYOC enterprise deployment for high-performance AI workloads. ([Source Code](https://github.com/lancedb/lancedb))
+- [LanceDB](https://www.lancedb.com/) - Vector database with BYOC enterprise deployment for high-performance AI workloads. ([Source Code](https://github.com/lancedb/lancedb))
 - [Pinecone](https://docs.pinecone.io/guides/production/bring-your-own-cloud) - Vector database purpose-built for AI applications requiring similarity search at scale.
 - [PlanetScale](https://planetscale.com/docs/plans/managed) - MySQL-compatible serverless database platform with managed BYOC deployment.
 - [Qdrant](https://qdrant.tech/hybrid-cloud/) - Vector database with Hybrid Cloud deployment on your own infrastructure. ([Source Code](https://github.com/qdrant/qdrant))
