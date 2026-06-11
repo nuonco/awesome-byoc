@@ -109,6 +109,7 @@
 - [Baseten](https://www.baseten.co) - ML model inference platform running in your VPC, managed by Baseten. ([Docs](https://www.baseten.co/deployments/baseten-self-hosted/))
 - [Braintrust](https://www.braintrust.dev) - LLM evals platform with data plane running in your own cloud VPC. ([Docs](https://www.braintrust.dev/docs/guides/self-hosting))
 - [Cohere](https://cohere.com) - Enterprise LLM platform with model containers deployed in your own cloud. ([Docs](https://docs.cohere.com/docs/private-deployment-overview))
+- [Definite](https://www.definite.app/platform/private-deployment) - All-in-one analytics platform (connectors, lakehouse, BI, and AI analyst) with BYOC deployment in your own cloud or on-prem.
 - [Devin](https://devin.ai/) - Autonomous AI software engineer with enterprise BYOC deployment options.
 - [LangChain](https://www.langchain.com/blog/langsmith-byoc-is-now-generally-available-on-aws) - LangSmith agent observability and evals platform, with traces, datasets, and prompts stored in your own AWS account. ([Docs](https://docs.langchain.com/langsmith/byoc))
 - [Tabnine](https://www.tabnine.com) - AI code assistant deployed in your VPC with Tabnine managing setup and updates. ([Docs](https://docs.tabnine.com/main/administering-tabnine/private-installation))
