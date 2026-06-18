@@ -82,6 +82,7 @@
 - [Okteto](https://www.okteto.com/) - Remote Development Environments for Humans and Agents.
 - [Ona](https://ona.com) - Mission control for software projects and AI agents.
 - [Rivet](https://rivet.dev/) - Infrastructure for stateful AI agents with Actor-based runtime. ([Source Code](https://github.com/rivet-gg/rivet))
+- [Vercel](https://vercel.com/enterprise) - Deploy enterprise apps and AI agents in your own cloud, with Vercel running the control plane.
 
 ### Apps
 
