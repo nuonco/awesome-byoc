@@ -7,6 +7,10 @@ interface Props {
 }
 
 const { title, description = "Discover the best Bring Your Own Cloud infra tools that support BYOC deployment" } = Astro.props;
+
+// Social crawlers require absolute URLs; build them from `site` in astro.config.mjs
+const ogImage = new URL('/og-image.png', Astro.site);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -22,13 +26,14 @@ const { title, description = "Discover the best Bring Your Own Cloud infra tools
     <meta property="og:title" content="A community-curated directory of products that support BYOC deployment." />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImage} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="A community-curated directory of products that support BYOC deployment." />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="/og-image.png" />
+    <meta name="twitter:image" content={ogImage} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
