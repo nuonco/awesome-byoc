@@ -2,7 +2,7 @@
 name: Definite
 description: All-in-one AI analytics platform running single-tenant in your own cloud
 homepage: https://www.definite.app
-docs: https://docs.definite.app
+docs: https://www.definite.app/docs/on-prem
 category: ai
 tags:
   - analytics
