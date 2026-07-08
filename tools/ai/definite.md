@@ -11,7 +11,7 @@ tags:
   - ai-agent
   - self-hosted
 license: commercial
-logo: /logos/definite.svg
+logo: /logos/definite.png
 cloudSupport:
   - aws
   - gcp
