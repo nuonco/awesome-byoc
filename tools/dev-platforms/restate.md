@@ -14,4 +14,5 @@ license: commercial
 logo: /logos/restate.png
 cloudSupport:
   - aws
+  - gcp
 ---
