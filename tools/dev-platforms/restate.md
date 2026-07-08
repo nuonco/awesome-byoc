@@ -1,6 +1,6 @@
 ---
 name: Restate
-description: Durable execution platform for workflows, AI agents, and microservice orchestration, fully managed in your own cloud and VPC
+description: Durable execution for workflows and AI agents, deployed in your own VPC
 homepage: https://www.restate.dev/
 docs: https://docs.restate.dev/
 category: dev-platforms
