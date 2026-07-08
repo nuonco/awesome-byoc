@@ -9,7 +9,7 @@ tags:
   - evals
   - ai-observability
 license: commercial
-logo: /logos/braintrust.webp
+logo: /logos/braintrust.png
 cloudSupport:
   - aws
   - gcp
