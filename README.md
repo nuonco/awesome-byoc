@@ -81,6 +81,7 @@
 - [Northflank](https://northflank.com/) - Dev platform for running databases, agents, GPU workloads, and jobs. ([Docs](https://northflank.com/docs))
 - [Okteto](https://www.okteto.com/) - Remote Development Environments for Humans and Agents.
 - [Ona](https://ona.com) - Mission control for software projects and AI agents.
+- [Restate](https://www.restate.dev/) - Durable execution platform for workflows, AI agents, and microservice orchestration, deployed via Terraform into a dedicated VPC in your own cloud (AWS and GCP, Azure in preview). ([Docs](https://docs.restate.dev/))
 - [Rivet](https://rivet.dev/) - Infrastructure for stateful AI agents with Actor-based runtime. ([Source Code](https://github.com/rivet-gg/rivet))
 - [Vercel](https://vercel.com/enterprise) - Deploy enterprise apps and AI agents in your own cloud, with Vercel running the control plane.
 
