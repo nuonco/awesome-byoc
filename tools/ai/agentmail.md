@@ -9,7 +9,7 @@ tags:
   - inboxes
   - api
 license: commercial
-logo: /logos/agentmail.png
+logo: /logos/agentmail.svg
 cloudSupport:
   - aws
 ---
