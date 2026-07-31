@@ -101,6 +101,7 @@
 - [Braintrust](https://www.braintrust.dev) - LLM evals platform with data plane running in your own cloud VPC. ([Docs](https://www.braintrust.dev/docs/guides/self-hosting))
 - [Cohere](https://cohere.com) - Enterprise LLM platform with model containers deployed in your own cloud. ([Docs](https://docs.cohere.com/docs/private-deployment-overview))
 - [Devin](https://devin.ai/) - Autonomous AI software engineer with enterprise BYOC deployment options.
+- [Strix](https://strix.ai) - Open-source autonomous AI agents for penetration testing that find and validate vulnerabilities through real exploitation. ([Source Code](https://github.com/usestrix/strix))
 - [Tabnine](https://www.tabnine.com) - AI code assistant deployed in your VPC with Tabnine managing setup and updates. ([Docs](https://docs.tabnine.com/main/administering-tabnine/private-installation))
 - [Together AI](https://www.together.ai) - LLM inference and fine-tuning platform deployed in your own VPC. ([Docs](https://docs.together.ai/docs/deployment-options))
 
