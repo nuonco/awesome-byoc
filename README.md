@@ -83,6 +83,7 @@
 - [Ona](https://ona.com) - Mission control for software projects and AI agents.
 - [Restate](https://www.restate.dev/) - Durable execution platform for workflows, AI agents, and microservice orchestration, deployed via Terraform into a dedicated VPC in your own cloud (AWS and GCP, Azure in preview). ([Docs](https://docs.restate.dev/))
 - [Rivet](https://rivet.dev/) - Infrastructure for stateful AI agents with Actor-based runtime. ([Source Code](https://github.com/rivet-gg/rivet))
+- [Tensorlake](https://www.tensorlake.ai/blog/introducing-tensorlake-byoc) - Serverless sandboxes for coding agents, RL, and CI, with sandboxes, storage, and traffic running on your own compute across clouds or bare metal.
 - [Vercel](https://vercel.com/enterprise) - Deploy enterprise apps and AI agents in your own cloud, with Vercel running the control plane.
 
 ### Apps
@@ -97,6 +98,7 @@
 
 ### AI
 
+- [AgentMail](https://www.agentmail.to/blog/agentmail-outposts-byoc) - Email infrastructure for AI agents, with message data and search indexes running in your own AWS account.
 - [Baseten](https://www.baseten.co) - ML model inference platform running in your VPC, managed by Baseten. ([Docs](https://www.baseten.co/deployments/baseten-self-hosted/))
 - [Braintrust](https://www.braintrust.dev) - LLM evals platform with data plane running in your own cloud VPC. ([Docs](https://www.braintrust.dev/docs/guides/self-hosting))
 - [Cohere](https://cohere.com) - Enterprise LLM platform with model containers deployed in your own cloud. ([Docs](https://docs.cohere.com/docs/private-deployment-overview))
