@@ -1,6 +1,6 @@
 ---
 name: LangChain
-description: LangSmith agent observability and evals platform, with traces, datasets, and prompts stored in your own AWS account
+description: LangSmith observability and evals for agents, with data kept in your own AWS account
 homepage: https://www.langchain.com/blog/langsmith-byoc-is-now-generally-available-on-aws
 docs: https://docs.langchain.com/langsmith/byoc
 category: ai
