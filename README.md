@@ -77,7 +77,6 @@
 ### Dev Platforms
 
 - [E2B](https://e2b.dev/enterprise) - Open source sandboxed cloud environments for AI-powered code execution and agents. ([Source Code](https://github.com/e2b-dev/E2B))
-- [LangChain](https://langchain.com) - Observability and evaluation platform for LLM applications. ([Docs](https://docs.langchain.com/langsmith/self-hosted))
 - [Northflank](https://northflank.com/) - Dev platform for running databases, agents, GPU workloads, and jobs. ([Docs](https://northflank.com/docs))
 - [Okteto](https://www.okteto.com/) - Remote Development Environments for Humans and Agents.
 - [Ona](https://ona.com) - Mission control for software projects and AI agents.
@@ -103,6 +102,7 @@
 - [Braintrust](https://www.braintrust.dev) - LLM evals platform with data plane running in your own cloud VPC. ([Docs](https://www.braintrust.dev/docs/guides/self-hosting))
 - [Cohere](https://cohere.com) - Enterprise LLM platform with model containers deployed in your own cloud. ([Docs](https://docs.cohere.com/docs/private-deployment-overview))
 - [Devin](https://devin.ai/) - Autonomous AI software engineer with enterprise BYOC deployment options.
+- [LangChain](https://www.langchain.com/blog/langsmith-byoc-is-now-generally-available-on-aws) - LangSmith agent observability and evals platform, with traces, datasets, and prompts stored in your own AWS account. ([Docs](https://docs.langchain.com/langsmith/byoc))
 - [Tabnine](https://www.tabnine.com) - AI code assistant deployed in your VPC with Tabnine managing setup and updates. ([Docs](https://docs.tabnine.com/main/administering-tabnine/private-installation))
 - [Together AI](https://www.together.ai) - LLM inference and fine-tuning platform deployed in your own VPC. ([Docs](https://docs.together.ai/docs/deployment-options))
 
