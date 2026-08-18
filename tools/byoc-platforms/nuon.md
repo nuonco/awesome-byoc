@@ -1,6 +1,6 @@
 ---
 name: Nuon
-description: Secure, continuous delivery into customer environments.
+description: Deploy, monitor, and upgrade your app in any customer cloud — even locked-down enterprises.
 homepage: https://nuon.co/
 docs: https://docs.nuon.co/
 category: byoc-platforms
