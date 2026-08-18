@@ -1,6 +1,6 @@
 ---
 name: Tensor9
-description: Any cloud, anywhere. No rewrite. Takes software written for one cloud and adapts it to run anywhere — another cloud, on-prem, or a customer's private environment.
+description: Any cloud, anywhere. No rewrite — adapts software built for one cloud to run anywhere.
 homepage: https://www.tensor9.com
 docs: https://docs.tensor9.com/
 category: byoc-platforms

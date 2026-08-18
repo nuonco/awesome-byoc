@@ -1,6 +1,6 @@
 ---
 name: Alien
-description: Ship to your customer's cloud — deploy your product into any AWS, GCP, or Azure account and keep it fully managed from a single dashboard.
+description: Ship to your customer's cloud — fully managed deployments in AWS, GCP, or Azure.
 homepage: https://alien.dev
 docs: https://alien.dev/docs
 category: byoc-platforms
