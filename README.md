@@ -111,7 +111,7 @@
 
 - [Alien](https://alien.dev) - Ship to your customer's cloud — deploy your product into any AWS, GCP, or Azure account and keep it fully managed from a single dashboard. ([Docs](https://alien.dev/docs))
 - [Distr](https://distr.sh/) - Open Source Distribution Platform for BYOC, on-prem and self-managed deployments. ([Source Code](https://github.com/distr-sh/distr))
-- [Nuon](https://docs.nuon.co/get-started/introduction) - Control Plane and Runner driven BYOC platform for deploying software to customer cloud environments and on-premises infrastructure.
+- [Nuon](https://nuon.co) - Control-plane and runner driven BYOC platform to deploy, monitor, and upgrade your app in any locked-down enterprise's cloud. ([Docs](https://docs.nuon.co/))
 - [Omnistrate](https://omnistrate.com) - Automate customer deployments across any environment — a private-label control plane for single-tenant, BYOC, and air-gapped deployments across clouds and on-premises. ([Docs](https://docs.omnistrate.com/))
 - [Replicated](https://www.replicated.com/) - Managed BYOC platform for vendors to manage the lifecycle of installing on a customer's cloud.
 - [Ryvn](https://www.ryvn.ai) - Your product, their cloud. Ryvn handles BYOC and on-prem infrastructure, so you can close enterprise deals — without the support burden. ([Docs](https://www.ryvn.ai/docs))
