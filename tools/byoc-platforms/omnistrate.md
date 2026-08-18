@@ -2,7 +2,7 @@
 name: Omnistrate
 description: Automate customer deployments across any environment — single-tenant, BYOC, and air-gapped.
 homepage: https://omnistrate.com
-docs: https://docs.omnistrate.com/build-guides/byoc-overview/
+docs: https://docs.omnistrate.com/
 category: byoc-platforms
 tags:
   - byoc
