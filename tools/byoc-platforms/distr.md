@@ -19,5 +19,4 @@ cloudSupport:
   - aws
   - gcp
   - azure
-  - on-prem
 ---
