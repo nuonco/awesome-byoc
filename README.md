@@ -65,6 +65,7 @@
 
 - [Airbyte](https://airbyte.com) - Managed ELT connector platform with data plane running in your own cloud. ([Docs](https://docs.airbyte.com/platform/deploying-airbyte))
 - [AnswerLayer](https://getanswerlayer.com) - Generative semantic layer for natural language analytics on sensitive data.
+- [Definite](https://www.definite.app/platform/private-deployment) - All-in-one analytics platform (connectors, lakehouse, BI, and AI analyst) with BYOC deployment in your own cloud or on-prem.
 - [Estuary](https://docs.estuary.dev/private-byoc/byoc-deployments/) - Real-time ETL platform with CDC capabilities for streaming data integration. ([Source Code](https://github.com/estuary/flow))
 - [Fivetran](https://www.fivetran.com) - Managed ELT pipelines with data-plane agent running in your own VPC. ([Docs](https://fivetran.com/docs/deployment-models/hybrid-deployment))
 - [Matillion](https://www.matillion.com) - Cloud ELT platform with customer-managed agents deployed in your own cloud VPC. ([Docs](https://docs.matillion.com/data-productivity-cloud/security/docs/deployment-options/))
