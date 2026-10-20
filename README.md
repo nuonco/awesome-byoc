@@ -68,6 +68,7 @@
 - [Estuary](https://docs.estuary.dev/private-byoc/byoc-deployments/) - Real-time ETL platform with CDC capabilities for streaming data integration. ([Source Code](https://github.com/estuary/flow))
 - [Fivetran](https://www.fivetran.com) - Managed ELT pipelines with data-plane agent running in your own VPC. ([Docs](https://fivetran.com/docs/deployment-models/hybrid-deployment))
 - [Matillion](https://www.matillion.com) - Cloud ELT platform with customer-managed agents deployed in your own cloud VPC. ([Docs](https://docs.matillion.com/data-productivity-cloud/security/docs/deployment-options/))
+- [Nango](https://nango.dev) - Product integrations and API auth platform, run by Nango inside your own cloud account. ([Docs](https://nango.dev/docs/guides/platform/self-hosting/byoc), [Source Code](https://github.com/NangoHQ/nango))
 - [Snowflake Openflow](https://www.snowflake.com/en/blog/openflow-byoc-data-integration/) - BYOC data integration that moves data into Snowflake while keeping compute in your environment.
 
 ### Storage
