@@ -50,6 +50,9 @@ cloudSupport:
 - `data-integration/`
 - `storage/`
 - `dev-platforms/`
+- `apps/`
+- `ai-app-builders/`
+- `ai/`
 - `byoc-platforms/`
 
 ## Website Development
