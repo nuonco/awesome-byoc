@@ -20,7 +20,7 @@
   - [Storage](#storage)
   - [Dev Platforms](#dev-platforms)
   - [Apps](#apps)
-  - [Internal Tools](#internal-tools)
+  - [AI App Builders](#ai-app-builders)
   - [AI](#ai)
   - [Bring Your Own Cloud Platforms](#bring-your-own-cloud-platforms)
 
@@ -83,17 +83,19 @@
 - [Restate](https://www.restate.dev/) - Durable execution platform for workflows, AI agents, and microservice orchestration, deployed via Terraform into a dedicated VPC in your own cloud (AWS and GCP, Azure in preview). ([Docs](https://docs.restate.dev/))
 - [Rivet](https://rivet.dev/) - Infrastructure for stateful AI agents with Actor-based runtime. ([Source Code](https://github.com/rivet-gg/rivet))
 - [Tensorlake](https://www.tensorlake.ai/blog/introducing-tensorlake-byoc) - Serverless sandboxes for coding agents, RL, and CI, with sandboxes, storage, and traffic running on your own compute across clouds or bare metal.
-- [Vercel](https://vercel.com/enterprise) - Deploy enterprise apps and AI agents in your own cloud, with Vercel running the control plane.
+- [Vercel](https://vercel.com/changelog/bring-your-own-cloud-on-aws-is-now-generally-available) - Deploy enterprise apps and AI agents in your own cloud, with Vercel running the control plane. ([Docs](https://vercel.com/docs/networking/bring-your-own-cloud))
 
 ### Apps
 
 - [Glean](https://www.glean.com) - Enterprise Work AI search and assistant platform managed in your own cloud. ([Docs](https://docs.glean.com/get-started/build/about-self-hosted))
 - [Knovos](https://www.knovos.com/) - Legal information management and eDiscovery platform. ([Docs](https://www.knovos.com/company/byc/))
 
-### Internal Tools
+### AI App Builders
 
+- [Lovable](https://lovable.dev) - AI app builder with Deploy on AWS and Azure for running apps in your own cloud account. ([Docs](https://lovable.dev/blog/enterprise-features-october-roundup))
+- [Replit](https://replit.com) - AI coding platform with BYOC for running the Replit platform or published apps in your cloud. ([Docs](https://docs.replit.com/teams/bring-your-own-cloud))
 - [Retool](https://retool.com) - Low-code internal tool builder with vendor-managed deployment in your AWS VPC. ([Docs](https://docs.retool.com/self-hosted/retool-managed/concepts/architecture))
-- [Superblocks](https://www.superblocks.com) - Internal tools platform with vendor-managed data plane in your cloud VPC. ([Docs](https://docs.superblocks.com/enterprise/hybrid-architecture/overview))
+- [Superblocks](https://www.superblocks.com) - Internal tools platform with vendor-managed data plane in your AWS. ([Docs](https://docs.superblocks.com/enterprise/cloud-prem/aws))
 
 ### AI
 

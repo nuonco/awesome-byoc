@@ -3,9 +3,9 @@ name: Retool
 description: Low-code internal tool builder deployed in your AWS
 homepage: https://retool.com
 docs: https://docs.retool.com/self-hosted/retool-managed/
-category: internal-tools
+category: ai-app-builders
 tags:
-  - internal-tools
+  - ai-app-builders
   - low-code
   - apps
 license: commercial

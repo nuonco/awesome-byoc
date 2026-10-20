@@ -28,13 +28,18 @@ export type Category =
   | 'byoc-platforms'
   | 'apps'
   | 'ai'
-  | 'internal-tools';
+  | 'ai-app-builders';
 
 export const categories: Record<Category, { label: string; description: string; icon: string }> = {
   'ai': {
     label: 'AI',
     description: 'AI and machine learning platforms',
     icon: `<i class="ph-bold ph-brain" style="color: #9B5DE5;"></i>`,
+  },
+  'ai-app-builders': {
+    label: 'AI App Builders',
+    description: 'AI and low-code platforms for building apps',
+    icon: `<i class="ph-bold ph-sparkle" style="color: #FF6B6B;"></i>`,
   },
   'apps': {
     label: 'Apps',
@@ -60,11 +65,6 @@ export const categories: Record<Category, { label: string; description: string; 
     label: 'Dev Platforms',
     description: 'Internal tools and platforms',
     icon: `<i class="ph-bold ph-code" style="color: #F5A623;"></i>`,
-  },
-  'internal-tools': {
-    label: 'Internal Tools',
-    description: 'Low-code platforms for building internal apps',
-    icon: `<i class="ph-bold ph-wrench" style="color: #FF6B6B;"></i>`,
   },
   'monitoring': {
     label: 'Observability',

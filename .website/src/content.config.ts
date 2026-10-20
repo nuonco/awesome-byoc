@@ -20,7 +20,7 @@ const toolsCollection = defineCollection({
       'byoc-platforms',
       'apps',
       'ai',
-      'internal-tools',
+      'ai-app-builders',
     ]),
     tags: z.array(z.string()),
     license: z.enum(['open-source', 'commercial', 'hybrid', 'proprietary']),
