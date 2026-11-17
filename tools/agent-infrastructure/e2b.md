@@ -4,7 +4,7 @@ description: AI sandboxes for enterprise-grade agents
 homepage: https://e2b.dev/enterprise
 github: https://github.com/e2b-dev/E2B
 docs: https://e2b.dev/docs/byoc
-category: dev-platforms
+category: agent-infrastructure
 tags:
   - ai-agents
   - sandboxes
