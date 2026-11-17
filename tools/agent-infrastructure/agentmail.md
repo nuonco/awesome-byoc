@@ -2,7 +2,7 @@
 name: AgentMail
 description: Email infrastructure for AI agents, with email data staying in your own cloud
 homepage: https://www.agentmail.to/blog/agentmail-outposts-byoc
-category: ai
+category: agent-infrastructure
 tags:
   - ai-agents
   - email

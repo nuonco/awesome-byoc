@@ -21,6 +21,7 @@
   - [Dev Platforms](#dev-platforms)
   - [Apps](#apps)
   - [AI App Builders](#ai-app-builders)
+  - [Agent Infrastructure](#agent-infrastructure)
   - [AI](#ai)
   - [Bring Your Own Cloud Platforms](#bring-your-own-cloud-platforms)
 
@@ -34,7 +35,7 @@
 - [Chroma](https://www.trychroma.com/) - Fast, serverless search platform supporting vector, full-text, regex, and metadata search. ([Source Code](https://github.com/chroma-core/chroma))
 - [ClickHouse](https://clickhouse.com/cloud/bring-your-own-cloud) - Real-time OLAP database for analytics with BYOC deployment. ([Source Code](https://github.com/ClickHouse/ClickHouse))
 - [CockroachDB](https://www.cockroachlabs.com/product/cloud/bring-your-own-cloud/) - Distributed SQL database built for global scalability, strong consistency, and survivability. ([Source Code](https://github.com/cockroachdb/cockroach))
-- [DragonflyDB](https://www.dragonflydb.io/docs/cloud/enterprise) - Redis-compatible in-memory database with managed BYOC enterprise deployment. ([Source Code](https://github.com/dragonflydb/dragonfly))
+- [DragonflyDB](https://www.dragonflydb.io/docs/cloud/byoc) - Redis-compatible in-memory database with managed BYOC enterprise deployment. ([Source Code](https://github.com/dragonflydb/dragonfly))
 - [Imply](https://imply.io/imply-enterprise-hybrid/) - Managed Apache Druid analytics database deployed in your own AWS VPC.
 - [LanceDB](https://www.lancedb.com/) - Vector database with BYOC enterprise deployment for high-performance AI workloads. ([Source Code](https://github.com/lancedb/lancedb))
 - [Pinecone](https://docs.pinecone.io/guides/production/bring-your-own-cloud) - Vector database purpose-built for AI applications requiring similarity search at scale.
@@ -77,13 +78,10 @@
 
 ### Dev Platforms
 
-- [E2B](https://e2b.dev/enterprise) - Open source sandboxed cloud environments for AI-powered code execution and agents. ([Source Code](https://github.com/e2b-dev/E2B))
 - [Northflank](https://northflank.com/) - Dev platform for running databases, agents, GPU workloads, and jobs. ([Docs](https://northflank.com/docs))
 - [Okteto](https://www.okteto.com/) - Remote Development Environments for Humans and Agents.
 - [Ona](https://ona.com) - Mission control for software projects and AI agents.
 - [Restate](https://www.restate.dev/) - Durable execution platform for workflows, AI agents, and microservice orchestration, deployed via Terraform into a dedicated VPC in your own cloud (AWS and GCP, Azure in preview). ([Docs](https://docs.restate.dev/byoc/overview))
-- [Rivet](https://rivet.dev/) - Infrastructure for stateful AI agents with Actor-based runtime. ([Source Code](https://github.com/rivet-gg/rivet))
-- [Tensorlake](https://www.tensorlake.ai/blog/introducing-tensorlake-byoc) - Serverless sandboxes for coding agents, RL, and CI, with sandboxes, storage, and traffic running on your own compute across clouds or bare metal.
 - [Vercel](https://vercel.com/changelog/bring-your-own-cloud-on-aws-is-now-generally-available) - Deploy enterprise apps and AI agents in your own cloud, with Vercel running the control plane. ([Docs](https://vercel.com/docs/networking/bring-your-own-cloud))
 
 ### Apps
@@ -98,9 +96,16 @@
 - [Retool](https://retool.com) - Low-code internal tool builder with vendor-managed deployment in your AWS VPC. ([Docs](https://docs.retool.com/self-hosted/retool-managed/concepts/architecture))
 - [Superblocks](https://www.superblocks.com) - Internal tools platform with vendor-managed data plane in your AWS. ([Docs](https://docs.superblocks.com/enterprise/cloud-prem/aws))
 
-### AI
+### Agent Infrastructure
 
 - [AgentMail](https://www.agentmail.to/blog/agentmail-outposts-byoc) - Email infrastructure for AI agents, with message data and search indexes running in your own AWS account.
+- [Anchor Browser](https://anchorbrowser.io) - Browser infrastructure for AI agents, with Anchor's patched Chrome running in your own Kubernetes cluster. ([Docs](https://docs.anchorbrowser.io/advanced/container-image-deployment))
+- [E2B](https://e2b.dev/enterprise) - Open source sandboxed cloud environments for AI-powered code execution and agents. ([Source Code](https://github.com/e2b-dev/E2B))
+- [Rivet](https://rivet.dev/) - Infrastructure for stateful AI agents with Actor-based runtime. ([Source Code](https://github.com/rivet-gg/rivet))
+- [Tensorlake](https://www.tensorlake.ai/blog/introducing-tensorlake-byoc) - Serverless sandboxes for coding agents, RL, and CI, with sandboxes, storage, and traffic running on your own compute across clouds or bare metal.
+
+### AI
+
 - [Baseten](https://www.baseten.co) - ML model inference platform running in your VPC, managed by Baseten. ([Docs](https://www.baseten.co/deployments/baseten-self-hosted/))
 - [Braintrust](https://www.braintrust.dev) - LLM evals platform with data plane running in your own cloud VPC. ([Docs](https://www.braintrust.dev/docs/guides/self-hosting))
 - [Cohere](https://cohere.com) - Enterprise LLM platform with model containers deployed in your own cloud. ([Docs](https://docs.cohere.com/docs/private-deployment-overview))

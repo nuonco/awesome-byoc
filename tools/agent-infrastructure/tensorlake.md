@@ -2,7 +2,7 @@
 name: Tensorlake
 description: Serverless sandboxes for coding agents, RL, and CI, running on your own compute
 homepage: https://www.tensorlake.ai/blog/introducing-tensorlake-byoc
-category: dev-platforms
+category: agent-infrastructure
 tags:
   - sandboxes
   - ai-agents

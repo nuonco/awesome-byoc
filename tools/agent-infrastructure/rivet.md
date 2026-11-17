@@ -4,7 +4,7 @@ description: Infrastructure for stateful AI agents with Actor-based runtime
 homepage: https://rivet.dev/
 github: https://github.com/rivet-gg/rivet
 docs: https://rivet.gg/docs/self-hosting/
-category: dev-platforms
+category: agent-infrastructure
 tags:
   - ai-agents
   - actors

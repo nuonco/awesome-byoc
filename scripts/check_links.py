@@ -32,6 +32,7 @@ from urllib3.util.retry import Retry
 TOOLS_DIR = Path(__file__).parent.parent / "tools"
 LINK_FIELDS = ["homepage", "github", "docs"]
 REQUEST_TIMEOUT = 30
+BLOCKED_STATUS_CODES = {401, 403, 429}
 USER_AGENT = "awesome-byoc-link-checker/1.0 (https://github.com/nuonco/awesome-byoc)"
 
 # Common browser-like headers to avoid being blocked
@@ -136,6 +137,10 @@ def check_url(session: requests.Session, url: str) -> tuple[Optional[int], str]:
         # Check for 404 and other error codes
         if status_code == 404:
             return (status_code, "Page not found (404)")
+
+        if status_code in BLOCKED_STATUS_CODES:
+            print(f"SKIPPED (HTTP {status_code}, site blocks automated requests) ", end="")
+            return (None, "")
 
         if status_code >= 400:
             return (status_code, f"HTTP error {status_code}")

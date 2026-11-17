@@ -21,6 +21,7 @@ const toolsCollection = defineCollection({
       'apps',
       'ai',
       'ai-app-builders',
+      'agent-infrastructure',
     ]),
     tags: z.array(z.string()),
     license: z.enum(['open-source', 'commercial', 'hybrid', 'proprietary']),
