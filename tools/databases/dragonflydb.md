@@ -3,7 +3,7 @@ name: DragonflyDB
 description: Redis-compatible in-memory database in your own cloud
 homepage: https://dragonflydb.io
 github: https://github.com/dragonflydb/dragonfly
-docs: https://www.dragonflydb.io/docs/cloud/enterprise
+docs: https://www.dragonflydb.io/docs/cloud/byoc
 category: databases
 tags:
   - cache

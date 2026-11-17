@@ -35,7 +35,7 @@
 - [Chroma](https://www.trychroma.com/) - Fast, serverless search platform supporting vector, full-text, regex, and metadata search. ([Source Code](https://github.com/chroma-core/chroma))
 - [ClickHouse](https://clickhouse.com/cloud/bring-your-own-cloud) - Real-time OLAP database for analytics with BYOC deployment. ([Source Code](https://github.com/ClickHouse/ClickHouse))
 - [CockroachDB](https://www.cockroachlabs.com/product/cloud/bring-your-own-cloud/) - Distributed SQL database built for global scalability, strong consistency, and survivability. ([Source Code](https://github.com/cockroachdb/cockroach))
-- [DragonflyDB](https://www.dragonflydb.io/docs/cloud/enterprise) - Redis-compatible in-memory database with managed BYOC enterprise deployment. ([Source Code](https://github.com/dragonflydb/dragonfly))
+- [DragonflyDB](https://www.dragonflydb.io/docs/cloud/byoc) - Redis-compatible in-memory database with managed BYOC enterprise deployment. ([Source Code](https://github.com/dragonflydb/dragonfly))
 - [Imply](https://imply.io/imply-enterprise-hybrid/) - Managed Apache Druid analytics database deployed in your own AWS VPC.
 - [LanceDB](https://www.lancedb.com/) - Vector database with BYOC enterprise deployment for high-performance AI workloads. ([Source Code](https://github.com/lancedb/lancedb))
 - [Pinecone](https://docs.pinecone.io/guides/production/bring-your-own-cloud) - Vector database purpose-built for AI applications requiring similarity search at scale.
