@@ -28,9 +28,15 @@ export type Category =
   | 'byoc-platforms'
   | 'apps'
   | 'ai'
-  | 'ai-app-builders';
+  | 'ai-app-builders'
+  | 'agent-infrastructure';
 
 export const categories: Record<Category, { label: string; description: string; icon: string }> = {
+  'agent-infrastructure': {
+    label: 'Agent Infrastructure',
+    description: 'Browsers, sandboxes, and other runtimes AI agents run on',
+    icon: `<i class="ph-bold ph-robot" style="color: #5EB3FF;"></i>`,
+  },
   'ai': {
     label: 'AI',
     description: 'AI and machine learning platforms',

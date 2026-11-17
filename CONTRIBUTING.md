@@ -52,6 +52,7 @@ cloudSupport:
 - `dev-platforms/`
 - `apps/`
 - `ai-app-builders/`
+- `agent-infrastructure/`
 - `ai/`
 - `byoc-platforms/`
 

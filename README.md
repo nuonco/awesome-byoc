@@ -21,6 +21,7 @@
   - [Dev Platforms](#dev-platforms)
   - [Apps](#apps)
   - [AI App Builders](#ai-app-builders)
+  - [Agent Infrastructure](#agent-infrastructure)
   - [AI](#ai)
   - [Bring Your Own Cloud Platforms](#bring-your-own-cloud-platforms)
 
@@ -97,6 +98,10 @@
 - [Replit](https://replit.com) - AI coding platform with BYOC for running the Replit platform or published apps in your cloud. ([Docs](https://docs.replit.com/teams/bring-your-own-cloud))
 - [Retool](https://retool.com) - Low-code internal tool builder with vendor-managed deployment in your AWS VPC. ([Docs](https://docs.retool.com/self-hosted/retool-managed/concepts/architecture))
 - [Superblocks](https://www.superblocks.com) - Internal tools platform with vendor-managed data plane in your AWS. ([Docs](https://docs.superblocks.com/enterprise/cloud-prem/aws))
+
+### Agent Infrastructure
+
+- [Anchor Browser](https://anchorbrowser.io) - Browser infrastructure for AI agents, with Anchor's patched Chrome running in your own Kubernetes cluster. ([Docs](https://docs.anchorbrowser.io/advanced/container-image-deployment))
 
 ### AI
 
